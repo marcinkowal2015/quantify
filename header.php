@@ -19,7 +19,8 @@
                     'before_list' => '<div class="header__main-menu">',
                     'after_list' => '</div>',
                     'before_element' => '<span class="header__main-menu__item">',
-                    'after_element' => '</span>'
+                    'after_element' => '</span>',
+                    'add_link' => false
                 ));
                 ?>
                 <div class="header__divider">

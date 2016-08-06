@@ -46,13 +46,23 @@ function arphabet_widgets_init() {
 }
 add_action( 'widgets_init', 'arphabet_widgets_init' );
 
-/**
+/**********************************************************
  * Custom functions
  */
 
-//Generate custom menu listing
+/**
+ * Generate custom menu listing
+ * Options:
+ * theme_location   - mandatory     ; slug of registered menu location
+ * before_list      - default: ''   ; html to inject before whole menu
+ * after_list       - default: ''   ; html to inject after whole menu
+ * before_element   - default: ''   ; html to inject before each menu element
+ * after_element    - default: ''   ; html to inject after each menu element
+ * add_link         - default: true ; enclose title in <a> tag and link it to source
+ */
 function create_custom_menu_listing($options){
     $menu_items = '';
+    $options['add_link'] = true;
     if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[$options['theme_location']] ) ) {
         $menu = wp_get_nav_menu_object( $locations[$options['theme_location']] );
         $menu_items = wp_get_nav_menu_items($menu->term_id);
@@ -63,11 +73,14 @@ function create_custom_menu_listing($options){
     foreach ( (array) $menu_items as $key => $menu_item ) {
         $title = $menu_item->title;
         $url = $menu_item->url;
-        $menu_list .= $before_element . '<a href="' . $url . '">' . $title . '</a>' .$after_element;
+        $element = ($options['add_link']) ?  '<a href="' . $url . '">' . $title . '</a>' : $title;
+            $menu_list .= $before_element . $element .$after_element;
     }
     $menu_list .= isset( $options['after_list'] ) ? $options['after_list'] : '';
     echo $menu_list;
 }
+
+//
 
 /**
  * Debug function
