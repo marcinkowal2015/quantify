@@ -14,7 +14,7 @@ footer{
   .footer{
 
     &-wrap{
-      max-width: 960px;
+      max-width: 920px;
       padding: 0 20px;
       margin: 0 auto;
       box-sizing: border-box;
@@ -44,6 +44,7 @@ footer{
               li {
                 & > a {
                   text-transform: none;
+                  font-weight: normal;
                 }
                 &:before {
                   color: $font-color;

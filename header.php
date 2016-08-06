@@ -13,12 +13,15 @@
         <div class="header__bar">
             <img src="<?php echo get_template_directory_uri()?>/img/logo.png">
             <div class="header__navigation">
-                <ul class="header__main-menu">
-                    <li class="header__main-menu__item">item</li>
-                    <li class="header__main-menu__item">item</li>
-                    <li class="header__main-menu__item">item</li>
-                    <li class="header__main-menu__item">item</li>
-                </ul>
+                <?php
+                create_custom_menu_listing(array(
+                    'theme_location' => 'header_nav',
+                    'before_list' => '<div class="header__main-menu">',
+                    'after_list' => '</div>',
+                    'before_element' => '<span class="header__main-menu__item">',
+                    'after_element' => '</span>'
+                ));
+                ?>
                 <div class="header__divider">
                     |
                 </div>

@@ -17,14 +17,16 @@
                 'theme_location' => 'footer_2'
             );
 
-            wp_nav_menu($args) ?>
+            wp_nav_menu($args)
+
+            ?>
 
         </div>
         <div class="footer-menu-wrap">
             <?php
 
             $args = array(
-                'theme_location' => 'footer_2'
+                'theme_location' => 'footer_3'
             );
 
             wp_nav_menu($args) ?>
