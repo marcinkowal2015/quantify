@@ -4,17 +4,25 @@ footer{
   height: 100%;
   min-height: 180px;
   background-color: #414042;
+  font-family: "Open Sans";
+  font-size: 12px;
   .footer-width-wrap{
-    max-width: 920px;
+    max-width: 960px;
+    padding: 0 20px;
     margin: 0 auto;
-
     .footer-menu{
+      float: left;
+      width: 25%;
+      padding-top: 40px;
       color:white;
+      .menu-label{
+        font-weight: bold;
+      }
       ul{
         padding: 0;
         list-style: none;
         li:before{
-          content: '';
+          content: '» ';
         }
       }
     }
