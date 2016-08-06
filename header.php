@@ -16,10 +16,12 @@
                 <?php
                 create_custom_menu_listing(array(
                     'theme_location' => 'header_nav',
-                    'before_list' => '<div class="header__main-menu">',
-                    'after_list' => '</div>',
-                    'before_element' => '<span class="header__main-menu__item">',
-                    'after_element' => '</span>',
+                    'menu_container' => 'div',
+                    'menu_attr' => 'class="header__main-menu"',
+                    'element_container' => 'span',
+                    'element_attr' => 'class="header__main-menu__item"',
+                    'element_id_prefix' => 'main-menu-item',
+                    'add_link' => false,
                 ));
                 ?>
                 <div class="header__divider">

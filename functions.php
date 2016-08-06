@@ -49,36 +49,49 @@ add_action( 'widgets_init', 'arphabet_widgets_init' );
 /**********************************************************
  * Custom functions
  */
-
 /**
  * Generate custom menu listing
  * Options:
- * theme_location   - mandatory     ; slug of registered menu location
- * before_list      - default: ''   ; html to inject before whole menu
- * after_list       - default: ''   ; html to inject after whole menu
- * before_element   - default: ''   ; html to inject before each menu element
- * after_element    - default: ''   ; html to inject after each menu element
- * add_link         - default: true ; enclose title in <a> tag and link it to source
+ * theme_location       - mandatory     ; slug of registered menu location
+ * menu_container       - default: ''   ; container in which enclose whole menu
+ * menu_attr            - default: ''   ; menu container attributes, ignored if menu_container is not defined
+ * element_container    - default: ''   ; container in which enclose each element
+ * element_attr         - default: ''   ; element container attributes, ignored if menu_container is not defined
+ * element_id_prefix - default: ''   ; prefix for indexing elements, if not defined elements are not indexed
+ * add_link             - default: true ; enclose title in <a> tag and link it to source
  */
 function create_custom_menu_listing($options){
-    $menu_items = '';
-    $add_link = isset($options['add_link']) ;
     if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[$options['theme_location']] ) ) {
         $menu = wp_get_nav_menu_object( $locations[$options['theme_location']] );
         $menu_items = wp_get_nav_menu_items($menu->term_id);
+        $add_link = isset($options['add_link']) ? $options['add_link'] : true ;
+        $menu_attr = isset($options['menu_attr']) ? $options['menu_attr'] : '' ;
+        $before_menu = isset($options['menu_container']) ? '<' . $options['menu_container'] . ' ' . $menu_attr . '>' : '' ;
+        $after_menu = isset($options['menu_container']) ? '</' . $options['menu_container'] . '>' : '' ;
+        $element_attr = isset($options['element_attr']) ? $options['element_attr'] : '' ;
+        $before_element = isset($options['element_container']) ? '<' . $options['element_container'] . ' ' . $element_attr : '' ;
+        $closing = isset($options['element_container']) ? '>' : '';
+        $after_element = isset( $options['element_container'] ) ? '</' . $options['element_container'] . '>' : '';
+
+
+        $menu_list = isset( $options['menu_container'] ) ? $before_menu : '';
+        $i = 0;
+        foreach ( (array) $menu_items as $key => $menu_item ) {
+            $title = $menu_item->title;
+            $url = $menu_item->url;
+            $id = isset($options['element_id_prefix']) ? 'id="' . $options['element_id_prefix'] . '-' . $i++ . '""': '';
+            $element = ($add_link) ?  '<a href="' . $url . '">' . $title . '</a>' : $title;
+            $menu_list .= $before_element . $id . $closing . $element .$after_element;
+        }
+        $menu_list .= isset( $options['menu_container'] ) ? $after_menu : '';
+        echo $menu_list;
+    } else {
+        echo '<span>Menu not found</span>';
     }
-    $menu_list = isset( $options['before_list'] ) ? $options['before_list'] : '';
-    $before_element = isset( $options['before_element'] ) ? $options['before_element'] : '';
-    $after_element = isset( $options['after_element'] ) ? $options['after_element'] : '';
-    foreach ( (array) $menu_items as $key => $menu_item ) {
-        $title = $menu_item->title;
-        $url = $menu_item->url;
-        $element = ($add_link) ?  '<a href="' . $url . '">' . $title . '</a>' : $title;
-            $menu_list .= $before_element . $element .$after_element;
-    }
-    $menu_list .= isset( $options['after_list'] ) ? $options['after_list'] : '';
-    echo $menu_list;
+
 }
+
+
 
 //
 
