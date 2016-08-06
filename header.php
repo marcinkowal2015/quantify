@@ -12,11 +12,14 @@
     <div class="header__bar">
         <img src="<?php echo get_template_directory_uri()?>/img/logo.png">
         <div class="header__navigation">
-            <div>
-                <span>aaa</span>
-                <span>aaa</span>
-                <span>aaa</span>
-                <span>aaa</span>
+            <ul class="header__main-menu">
+                <li class="header__main-menu__item">item</li>
+                <li class="header__main-menu__item">item</li>
+                <li class="header__main-menu__item">item</li>
+                <li class="header__main-menu__item">item</li>
+            </ul>
+            <div class="header__divider">
+                |
             </div>
             <div class="header__language">
                 <span class="header__language__pl">pl</span>
