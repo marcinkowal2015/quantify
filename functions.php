@@ -62,7 +62,7 @@ add_action( 'widgets_init', 'arphabet_widgets_init' );
  */
 function create_custom_menu_listing($options){
     $menu_items = '';
-    $options['add_link'] = true;
+    $add_link = isset($options['add_link']) ;
     if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[$options['theme_location']] ) ) {
         $menu = wp_get_nav_menu_object( $locations[$options['theme_location']] );
         $menu_items = wp_get_nav_menu_items($menu->term_id);
@@ -73,7 +73,7 @@ function create_custom_menu_listing($options){
     foreach ( (array) $menu_items as $key => $menu_item ) {
         $title = $menu_item->title;
         $url = $menu_item->url;
-        $element = ($options['add_link']) ?  '<a href="' . $url . '">' . $title . '</a>' : $title;
+        $element = ($add_link) ?  '<a href="' . $url . '">' . $title . '</a>' : $title;
             $menu_list .= $before_element . $element .$after_element;
     }
     $menu_list .= isset( $options['after_list'] ) ? $options['after_list'] : '';
