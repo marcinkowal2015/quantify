@@ -1,0 +1,28 @@
+header {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .header__bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 105px;
+    max-width: 920px;
+    width: 100%;
+
+  }
+
+  .header__navigation {
+    display: inline-flex;
+  }
+
+  .header__language {
+    text-transform: uppercase;
+  }
+
+  .header__language__pl {
+    margin-right: 10px;
+  }
+}
