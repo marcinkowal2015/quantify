@@ -60,7 +60,7 @@ add_action( 'widgets_init', 'arphabet_widgets_init' );
  * element_id_prefix - default: ''   ; prefix for indexing elements, if not defined elements are not indexed
  * add_link             - default: true ; enclose title in <a> tag and link it to source
  */
-function create_custom_menu_listing($options){
+function custom_menu_listing($options){
     if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[$options['theme_location']] ) ) {
         $menu = wp_get_nav_menu_object( $locations[$options['theme_location']] );
         $menu_items = wp_get_nav_menu_items($menu->term_id);
@@ -91,9 +91,19 @@ function create_custom_menu_listing($options){
 
 }
 
+/**
+ * Get top ancestor
+ */
+function get_top_ancestor_id(){
 
+    global $post;
 
-//
+    if( $post->post_parent ){
+        $ancestors = array_reverse(get_post_ancestors($post->ID));
+        return $ancestors[0];
+    }
+    return $post->ID;
+}
 
 /**
  * Debug function
