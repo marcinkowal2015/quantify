@@ -3,7 +3,10 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     cleanCSS = require('gulp-clean-css'),
-    concat = require('gulp-concat');
+    concat = require('gulp-concat'),
+    browserify = require("browserify"),
+    source = require('vinyl-source-stream'),
+    tsify = require("tsify");
 
 gulp.task('sass', function () {
   return gulp.src('./sass/**/*.scss')
@@ -15,4 +18,18 @@ gulp.task('sass', function () {
 
 gulp.task('default', function() {
   gulp.watch('./sass/**/*.scss', ['sass']);
+});
+
+gulp.task("bundle-ts", function () {
+  return browserify({
+    basedir: '.',
+    debug: true,
+    entries: ['ts/main.ts'],
+    cache: {},
+    packageCache: {}
+  })
+  .plugin(tsify)
+  .bundle()
+  .pipe(source('bundle.js'))
+  .pipe(gulp.dest("js"));
 });

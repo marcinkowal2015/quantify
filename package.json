@@ -3,10 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "devDependencies": {
+    "browserify": "^13.1.0",
+    "browserify-shim": "^3.8.12",
     "gulp": "latest",
-    "gulp-sass": "latest",
-    "gulp-rename": "latest",
     "gulp-clean-css": "latest",
-    "gulp-concat": "latest"
+    "gulp-concat": "latest",
+    "gulp-rename": "latest",
+    "gulp-sass": "latest",
+    "tsify": "^1.0.3",
+    "typescript": "^1.8.10",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "browserify": {
+    "transform": [ "browserify-shim" ]
+  },
+  "browserify-shim": {
+    "jquery": "global:$"
   }
 }
