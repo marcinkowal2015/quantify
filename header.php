@@ -72,10 +72,15 @@
 //            'title_li' => ''
 //        ));
         foreach ($menu_items as $item) {
-            $my_wp_query = new WP_Query();
-            $all_wp_pages = $my_wp_query->query(array('post_type' => 'page'));
+            console_log($item);
             $page =  get_page_by_title($item->title);
-            $page_children = get_page_children( $page->ID, $all_wp_pages );
+            $wp_query = new WP_Query();
+            $direct_page_children = $wp_query->query(array(
+                'post_type' => 'page' ,
+                'post_parent' => $page->ID
+            ));
+            $page_children = array_reverse(get_page_children( $page->ID, $direct_page_children ));
+            console_log($page_children);
             if ($page_children){
             ?>
 
@@ -83,11 +88,15 @@
                 <div class="navigation__bar">
                     <?php foreach ($page_children as $child){
                         $child_page = get_page_by_title($child->post_title);
-                        $child_page_children = get_page_children( $page->ID, $all_wp_pages );
+                        $direct_child_children = $wp_query->query(array(
+                            'post_type' => 'page' ,
+                            'post_parent' => $child_page->ID
+                        ));
+                        $child_page_children = array_reverse(get_page_children( $child_page->ID, $direct_child_children ));
                         ?>
 
                     <div class="navigation__bar__list">
-                        <div class="navigation__bar__list__title"><?php echo $child->post_title ?></div>
+                        <div class="navigation__bar__list__title"><a href="<?php echo $child_page->guid ?>"><?php echo $child_page->post_title ?></a></div>
                         <ul>
                         <?php foreach ($child_page_children as $grandchildren){
                             $grandchildren_page = get_page_by_title($child->post_title);?>
