@@ -16,7 +16,7 @@ add_action('after_setup_theme' , 'add_supports');
 
 function resources(){
     wp_enqueue_style( 'style', get_template_directory_uri().'/style.css' );
-	wp_enqueue_script('main', get_template_directory_uri().'/js/bundle.js');
+	wp_enqueue_script('main', get_template_directory_uri().'/js/bundle.js', array(), false, true);
 
 }
 add_action( 'wp_enqueue_scripts', 'resources' );
@@ -77,11 +77,10 @@ function custom_menu_listing($options){
 
 
         $menu_list = isset( $options['menu_container'] ) ? $before_menu : '';
-        $i = 0;
         foreach ( (array) $menu_items as $key => $menu_item ) {
             $title = $menu_item->title;
             $url = $menu_item->url;
-            $id = isset($options['element_id_prefix']) ? 'id="' . $options['element_id_prefix'] . '-' . $i++ . '""': '';
+            $id = isset($options['element_id_prefix']) ? 'id="' . $options['element_id_prefix'] . '-' . $menu_item->ID . '""': '';
             $element = ($add_link) ?  '<a href="' . $url . '">' . $title . '</a>' : $title;
             $menu_list .= $before_element . $id . $closing . $element .$after_element;
         }
