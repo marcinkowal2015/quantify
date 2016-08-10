@@ -45,6 +45,7 @@ header {
       &__item {
         margin-left: 20px;
         margin-right: 20px;
+        cursor: pointer;
 
         &:last-of-type {
           margin-right: 0;
@@ -53,13 +54,16 @@ header {
     }
   }
 
+  .subpages_container {
+    display: none;
+  }
+
   .navigation {
     background-color: #aaa;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: "Open Sans";
-    display: none;
 
     &__bar {
       height: 105px;
