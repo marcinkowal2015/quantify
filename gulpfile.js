@@ -33,3 +33,7 @@ gulp.task("bundle-ts", function () {
   .pipe(source('bundle.js'))
   .pipe(gulp.dest("js"));
 });
+
+gulp.task('watch-ts' ,function () {
+  gulp.watch('./ts/**/*.ts' , ['bundle-ts']);
+});
