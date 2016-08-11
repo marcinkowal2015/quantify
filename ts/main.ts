@@ -18,15 +18,15 @@ $(document).ready(() => {
                         $(menuContent).show();
                         activeSubmenu = menuContent;
                     }
-                    // else if(slideToggleAvailable && activeSubmenu != menuContent) {
-                    //     slideToggleAvailable = false;
-                    //     subpagesMenuVisible = !subpagesMenuVisible;
-                    //     $(menuContent)
-                    //         .slideToggle(200, () => {
-                    //             slideToggleAvailable = true;
-                    //             activeSubmenu = menuContent;
-                    //         });
-                    // }
+                    else if(slideToggleAvailable && activeSubmenu != menuContent) {
+                        slideToggleAvailable = false;
+                        subpagesMenuVisible = !subpagesMenuVisible;
+                        $(menuContent)
+                            .slideToggle(200, () => {
+                                slideToggleAvailable = true;
+                                activeSubmenu = menuContent;
+                            });
+                    }
                 });
             } else {
                 $(menuItem).on('mouseover ' , () => {
