@@ -14,14 +14,17 @@
             <img src="<?php echo get_template_directory_uri()?>/img/logo.png">
             <div class="header__navigation">
                 <?php
+                $menu_items = get_pages(array(
+                    'parent' => 0
+                ));
                 custom_menu_listing(array(
-                    'theme_location' => 'header_nav',
+                    'menu_items' => $menu_items,
                     'menu_container' => 'div',
                     'menu_attr' => 'class="header__main-menu"',
                     'element_container' => 'span',
                     'element_attr' => 'class="header__main-menu__item"',
                     'element_id_prefix' => 'main-menu-item',
-                    'add_link' => false,
+                    'add_link' => true,
                 ));
                 ?>
                 <div class="header__divider">
@@ -34,48 +37,49 @@
             </div>
         </div>
     </div>
-    <?php if ( ( $locations = get_nav_menu_locations() ) && isset( $locations['header_nav'] ) ) {
-        $menu = wp_get_nav_menu_object( $locations['header_nav'] );
-        $menu_items = wp_get_nav_menu_items($menu->term_id);
-        foreach ($menu_items as $item) {
-            $page =  get_page_by_title($item->title);
-            $wp_query = new WP_Query();
-            $direct_page_children = $wp_query->query(array(
-                'post_type' => 'page' ,
-                'post_parent' => $page->ID
-            ));
-            $page_children = array_reverse(get_page_children( $page->ID, $direct_page_children ));
-            if ($page_children){
+    <?php foreach ($menu_items as $page) {
+        $wp_query = new WP_Query();
+        $direct_page_children = $wp_query->query(array(
+            'post_type' => 'page' ,
+            'post_parent' => $page->ID
+        ));
+        $page_children = array_reverse(get_page_children( $page->ID, $direct_page_children ));
+//        console_log($page_children);
+        if ($page_children){
             ?>
-                <?php foreach ($page_children as $child){
-                    $child_page = get_page_by_title($child->post_title);
-                    $direct_child_children = $wp_query->query(array(
-                        'post_type' => 'page' ,
-                        'post_parent' => $child_page->ID
-                    ));
-                    $child_page_children = array_reverse(get_page_children( $child_page->ID, $direct_child_children ));
-                    ?>
-                    <div class="subpages_container" id="<?php echo "main-menu-item-".$item->ID."_content" ?>">
-                        <div class="navigation">
-                            <div class="navigation__bar">
-                                <div class="navigation__bar__list">
-                                    <div class="navigation__bar__list__title"><a href="<?php echo $child_page->guid ?>"><?php echo $child_page->post_title ?></a></div>
-                                    <ul>
+            <div class="subpages_container" id="<?php echo "main-menu-item-".$page->ID."_content" ?>">
+                <div class="navigation">
+                    <div class="navigation__bar">
+                        <?php foreach ($page_children as $child){
+                            $child_page = get_page_by_title($child->post_title);
+                            $direct_child_children = $wp_query->query(array(
+                                'post_type' => 'page' ,
+                                'post_parent' => $child_page->ID
+                            ));
+                            $child_page_children = array_reverse(get_page_children( $child_page->ID, $direct_child_children ));
+                            ?>
+
+
+                            <div class="navigation__bar__list">
+                                <div class="navigation__bar__list__title"><a href="<?php echo $child_page->guid ?>"><?php echo $child_page->post_title ?></a></div>
+                                <ul>
                                     <?php foreach ($child_page_children as $grandchildren){
                                         $grandchildren_page = get_page_by_title($child->post_title);?>
 
                                         <li><a href="<?php echo $grandchildren_page->guid ?>"><?php echo $grandchildren->post_title ?></a></li>
-                                    <?php
+                                        <?php
                                     } ?>
-                                    </ul>
-                                </div>
+                                </ul>
                             </div>
-                        </div>
+                            <?php
+                        } ?>
+
                     </div>
-                    <?php
-                } ?>
+                </div>
+            </div>
             <?php
-            }
         }
+
     }?>
 </header>
+<section class="body-content">

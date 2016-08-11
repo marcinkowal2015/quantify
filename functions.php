@@ -4,12 +4,12 @@
     add_theme_support('post-thumbnails');
 
     //Add navigation menus
-    register_nav_menus(array(
-        'header_nav'    => __('Menu glowne'),
-        'footer_1'      => __('Footer Menu 1'),
-        'footer_2'      => __('Footer Menu 2'),
-        'footer_3'      => __('Footer Menu 3'),
-    ));
+//    register_nav_menus(array(
+//        'header_nav'    => __('Menu glowne'),
+//        'footer_1'      => __('Footer Menu 1'),
+//        'footer_2'      => __('Footer Menu 2'),
+//        'footer_3'      => __('Footer Menu 3'),
+//    ));
 
 }
 add_action('after_setup_theme' , 'add_supports');
@@ -54,7 +54,7 @@ add_action( 'widgets_init', 'arphabet_widgets_init' );
 /**
  * Generate custom menu listing
  * Options:
- * theme_location       - mandatory     ; slug of registered menu location
+ * menu_items          - mandatory     ; slug of registered menu location
  * menu_container       - default: ''   ; container in which enclose whole menu
  * menu_attr            - default: ''   ; menu container attributes, ignored if menu_container is not defined
  * element_container    - default: ''   ; container in which enclose each element
@@ -63,9 +63,8 @@ add_action( 'widgets_init', 'arphabet_widgets_init' );
  * add_link             - default: true ; enclose title in <a> tag and link it to source
  */
 function custom_menu_listing($options){
-    if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[$options['theme_location']] ) ) {
-        $menu = wp_get_nav_menu_object( $locations[$options['theme_location']] );
-        $menu_items = wp_get_nav_menu_items($menu->term_id);
+    if ( isset( $options['menu_items'] ) ) {
+        $menu_items = $options['menu_items'];
         $add_link = isset($options['add_link']) ? $options['add_link'] : true ;
         $menu_attr = isset($options['menu_attr']) ? $options['menu_attr'] : '' ;
         $before_menu = isset($options['menu_container']) ? '<' . $options['menu_container'] . ' ' . $menu_attr . '>' : '' ;
@@ -78,8 +77,8 @@ function custom_menu_listing($options){
 
         $menu_list = isset( $options['menu_container'] ) ? $before_menu : '';
         foreach ( (array) $menu_items as $key => $menu_item ) {
-            $title = $menu_item->title;
-            $url = $menu_item->url;
+            $title = $menu_item->post_title;
+            $url = $menu_item->guid;
             $id = isset($options['element_id_prefix']) ? 'id="' . $options['element_id_prefix'] . '-' . $menu_item->ID . '""': '';
             $element = ($add_link) ?  '<a href="' . $url . '">' . $title . '</a>' : $title;
             $menu_list .= $before_element . $id . $closing . $element .$after_element;

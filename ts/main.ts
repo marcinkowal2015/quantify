@@ -10,23 +10,37 @@ $(document).ready(() => {
     $(".header__main-menu__item")
         .toArray()
         .forEach(menuItem => {
-            $("#" + menuItem.id).click(() => {
-                let menuContent: string = "#" + menuItem.id + "_content";
-                if(activeSubmenu != menuContent && subpagesMenuVisible && slideToggleAvailable) {
-                    $(activeSubmenu).hide();
-                    $(menuContent).show();
-                    activeSubmenu = menuContent;
-                }
-                else if(slideToggleAvailable) {
-                    slideToggleAvailable = false;
-                    subpagesMenuVisible = !subpagesMenuVisible;
-                    $(menuContent)
-                        .slideToggle(1000, () => {
-                            slideToggleAvailable = true;
-                            activeSubmenu = menuContent;
-                        });
-                }
-            })
+            let menuContent: string = "#" + menuItem.id + "_content";
+            if ( $(menuContent)[0] ) {
+                $(menuItem).on('mouseover ' , () => {
+                    if(activeSubmenu != menuContent && subpagesMenuVisible && slideToggleAvailable) {
+                        $(activeSubmenu).hide();
+                        $(menuContent).show();
+                        activeSubmenu = menuContent;
+                    }
+                    // else if(slideToggleAvailable && activeSubmenu != menuContent) {
+                    //     slideToggleAvailable = false;
+                    //     subpagesMenuVisible = !subpagesMenuVisible;
+                    //     $(menuContent)
+                    //         .slideToggle(200, () => {
+                    //             slideToggleAvailable = true;
+                    //             activeSubmenu = menuContent;
+                    //         });
+                    // }
+                });
+            } else {
+                $(menuItem).on('mouseover ' , () => {
+                    if(slideToggleAvailable) {
+                        slideToggleAvailable = false;
+                        subpagesMenuVisible = !subpagesMenuVisible;
+                        $(activeSubmenu)
+                            .slideToggle(200, () => {
+                                slideToggleAvailable = true;
+                                activeSubmenu = menuContent;
+                            });
+                    }
+                });
+            }
         })
 });
 
