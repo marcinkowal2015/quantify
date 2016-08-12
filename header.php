@@ -44,7 +44,6 @@
             'post_parent' => $page->ID
         ));
         $page_children = array_reverse(get_page_children( $page->ID, $direct_page_children ));
-//        console_log($page_children);
         if ($page_children){
             ?>
             <div class="subpages_container" id="<?php echo "main-menu-item-".$page->ID."_content" ?>">
@@ -80,6 +79,7 @@
             <?php
         }
 
-    }?>
+    }
+    wp_reset_query();?>
 </header>
 <section class="body-content">
