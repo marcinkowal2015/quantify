@@ -54,12 +54,13 @@ add_action( 'widgets_init', 'arphabet_widgets_init' );
 /**
  * Generate custom menu listing
  * Options:
- * menu_items          - mandatory     ; slug of registered menu location
+ * menu_items           - mandatory     ; slug of registered menu location
  * menu_container       - default: ''   ; container in which enclose whole menu
  * menu_attr            - default: ''   ; menu container attributes, ignored if menu_container is not defined
  * element_container    - default: ''   ; container in which enclose each element
+ * element_siblings     - default: ''   ; additional elements after element in element container
  * element_attr         - default: ''   ; element container attributes, ignored if menu_container is not defined
- * element_id_prefix - default: ''   ; prefix for indexing elements, if not defined elements are not indexed
+ * element_id_prefix    - default: ''   ; prefix for indexing elements, if not defined elements are not indexed
  * add_link             - default: true ; enclose title in <a> tag and link it to source
  */
 function custom_menu_listing($options){
@@ -70,18 +71,19 @@ function custom_menu_listing($options){
         $before_menu = isset($options['menu_container']) ? '<' . $options['menu_container'] . ' ' . $menu_attr . '>' : '' ;
         $after_menu = isset($options['menu_container']) ? '</' . $options['menu_container'] . '>' : '' ;
         $element_attr = isset($options['element_attr']) ? $options['element_attr'] : '' ;
-        $before_element = isset($options['element_container']) ? '<' . $options['element_container'] . ' ' . $element_attr : '' ;
         $closing = isset($options['element_container']) ? '>' : '';
         $after_element = isset( $options['element_container'] ) ? '</' . $options['element_container'] . '>' : '';
-
+        $element_siblings = isset($options['element_siblings']) ? $options['element_siblings'] : '';
 
         $menu_list = isset( $options['menu_container'] ) ? $before_menu : '';
         foreach ( (array) $menu_items as $key => $menu_item ) {
+            $active = ( get_top_ancestor_id() == $menu_item->ID ) ? 'style="text-decoration:underline;"' : '';
+            $before_element = isset($options['element_container']) ? '<' . $options['element_container'] . ' ' . $element_attr .' ' . $active : '' ;
             $title = $menu_item->post_title;
             $url = $menu_item->guid;
             $id = isset($options['element_id_prefix']) ? 'id="' . $options['element_id_prefix'] . '-' . $menu_item->ID . '""': '';
-            $element = ($add_link) ?  '<a href="' . $url . '">' . $title . '</a>' : $title;
-            $menu_list .= $before_element . $id . $closing . $element .$after_element;
+            $element = ($add_link) ?  '<a href="' . $url . '">' . $title . '</a>': $title;
+            $menu_list .= $before_element . $id . $closing . $element . $element_siblings .$after_element;
         }
         $menu_list .= isset( $options['menu_container'] ) ? $after_menu : '';
         echo $menu_list;

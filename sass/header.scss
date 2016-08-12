@@ -1,3 +1,5 @@
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+
 $header-border-color : rgba( 0, 0, 0, 0.2 );
 $header-menu-item-color: #414042;
 $header-menu-item-hover-color: #000;
@@ -7,30 +9,29 @@ $breadcrumb-hover-color : #000;
 header {
   .header {
     background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
     font-family: "Open Sans";
     a{
       font-size: 14px;
-      text-decoration: none;
       &:link, &:active, &:visited{
         color: $header-menu-item-color;
-        border: none;
-        transition: border 1s;
+        text-decoration: none;
       }
       &:hover{
         color: $header-menu-item-hover-color;
-        border-bottom: 1px solid $header-menu-item-hover-color;
-        transition: border 1s;
+      }
+      &.active{
+        text-decoration: underline;
       }
     }
     border-bottom: solid 1px $header-border-color;
 
     &__bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      @include display(flex);
+      @include align-items(center);
+      @include justify-content(space-between);
       height: 105px;
       max-width: 920px;
       width: 100%;
@@ -39,7 +40,7 @@ header {
     }
 
     &__navigation {
-      display: inline-flex;
+      @include display(inline-flex);
       text-transform: uppercase;
     }
 
@@ -58,14 +59,21 @@ header {
     }
 
     &__main-menu {
-      display: inline-flex;
+      @include display(inline-flex);
       margin: 0;
       list-style-type: none;
 
       &__item {
+        position: relative;
         margin-left: 20px;
         margin-right: 20px;
         cursor: pointer;
+
+        a{
+          &:hover{
+            text-decoration: underline;
+          }
+        }
 
         &:last-of-type {
           margin-right: 0;
@@ -77,8 +85,8 @@ header {
   .breadcrumb{
     border-bottom: solid 1px $header-border-color;
     &__bar {
-      display: flex;
-      align-items: center;
+      @include display( flex );
+      @include align-items(center);
       height: 50px;
       max-width: 920px;
       width: 100%;
@@ -135,11 +143,22 @@ header {
   }
 
   .navigation {
-    background-color: #aaa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: #ebebeb;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
     font-family: "Open Sans";
+
+    a{
+      font-size: 14px;
+      &:link, &:active, &:visited{
+        color: $header-menu-item-color;
+        text-decoration: none;
+      }
+      &:hover{
+        color: $header-menu-item-hover-color;
+      }
+    }
 
     &__bar {
       height: 105px;
@@ -147,7 +166,7 @@ header {
       width: 100%;
       padding-left: 20px;
       padding-right: 20px;
-      display: inline-flex;
+      @include display(inline-flex);
       padding-top: 20px;
 
       &__list {
