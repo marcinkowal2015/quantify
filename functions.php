@@ -106,6 +106,13 @@ function get_top_ancestor_id(){
 }
 
 /**
+ * Get page by ID
+ */
+function get_page_by_ID($args){
+
+}
+
+/**
  * Debug function
  */
 function console_log( $data ){

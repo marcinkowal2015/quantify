@@ -1,3 +1,9 @@
+$header-border-color : rgba( 0, 0, 0, 0.2 );
+$header-menu-item-color: #414042;
+$header-menu-item-hover-color: #000;
+$breadcrumb-color : #414042;
+$breadcrumb-hover-color : #000;
+
 header {
   .header {
     background-color: #fff;
@@ -5,8 +11,21 @@ header {
     align-items: center;
     justify-content: center;
     font-family: "Open Sans";
-    font-size: 14px;
-    color: #414042;
+    a{
+      font-size: 14px;
+      text-decoration: none;
+      &:link, &:active, &:visited{
+        color: $header-menu-item-color;
+        border: none;
+        transition: border 1s;
+      }
+      &:hover{
+        color: $header-menu-item-hover-color;
+        border-bottom: 1px solid $header-menu-item-hover-color;
+        transition: border 1s;
+      }
+    }
+    border-bottom: solid 1px $header-border-color;
 
     &__bar {
       display: flex;
@@ -26,6 +45,7 @@ header {
 
     &__language {
       text-transform: uppercase;
+      font-size: 14px;
     }
 
     &__language__pl {
@@ -50,6 +70,62 @@ header {
         &:last-of-type {
           margin-right: 0;
         }
+      }
+    }
+  }
+
+  .breadcrumb{
+    border-bottom: solid 1px $header-border-color;
+    &__bar {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto;
+      padding-left: 20px;
+      padding-right: 20px;
+      a{
+        font-family: "Open Sans";
+        font-size: 14px;
+        text-decoration: none;
+        &:link,&:visited,&:active{
+          color: $breadcrumb-color;
+        }
+        &:hover{
+          color: $breadcrumb-hover-color;
+        }
+        span.breadcrumb__bar__item{
+          &:before{
+            content: '\00a0» ';
+            color: $breadcrumb-color;
+          }
+        }
+      }
+      a.active{
+        span.breadcrumb__bar__item{
+          &:before{
+            content: '\00a0» ';
+            color: $breadcrumb-color;
+          }
+          color: $breadcrumb-hover-color;
+        }
+      }
+    }
+  }
+
+  .page-title{
+    padding: 30px 0;
+    &__container{
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      h1{
+        font-family: "Open Sans";
+        margin: 0;
+        padding: 0;
+        font-size: 24px;
+        color: #4f555b;
       }
     }
   }

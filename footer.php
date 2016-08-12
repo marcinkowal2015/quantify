@@ -19,7 +19,7 @@
                         $grand_children = array_reverse(get_page_children( $top_ancestor_children[$i]->ID, $direct_page_children )); ?>
                         <a href="<?php echo $top_ancestor_children[$i]->guid ?>"><?php echo $top_ancestor_children[$i]->post_title ?></a>
                         <ul>
-                        <?php foreach ( $grand_children as $grand_child) { console_log($grand_child);?>
+                        <?php foreach ( $grand_children as $grand_child) {;?>
                             <li>
                                 <a href="<?php echo $grand_child->guid ?>"><?php echo $grand_child->post_title ?></a>
                             </li>

@@ -37,6 +37,27 @@
             </div>
         </div>
     </div>
+    <?php wp_reset_query();
+    if( !is_home() ) { ?>
+        <div class="breadcrumb">
+            <div class="breadcrumb__bar">
+                <a href="<?php echo get_home_url() ?>"><span>Strona Główna</span></a>
+                <?php $current_page = get_post();
+                $page_path = array( $current_page );
+                $tmp = $current_page;
+                while( $tmp->post_parent != 0){
+                    $tmp =  get_post( $current_page->post_parent);
+                    array_push( $page_path , $tmp);
+                }
+                $page_path = array_reverse($page_path);
+                foreach ($page_path as $item ) {?>
+                    <a <?php if ($item != $current_page){ ?> href="<?php echo $item->guid ;?>" <?php } else {
+                        echo 'class="active"';
+                    } ?>><span class="breadcrumb__bar__item"><?php echo $item->post_title; ?></span></a>
+                <?php } ?>
+            </div>
+        </div>
+    <?php } ?>
     <?php foreach ($menu_items as $page) {
         $wp_query = new WP_Query();
         $direct_page_children = $wp_query->query(array(
@@ -80,6 +101,15 @@
         }
 
     }
-    wp_reset_query();?>
+    wp_reset_query();
+    if (!is_home() ) { ?>
+    <div class="page-title">
+        <div class="page-title__container">
+            <h1>
+                <?php the_title(); ?>
+            </h1>
+        </div>
+    </div>
+    <?php }?>
 </header>
 <section class="body-content">
