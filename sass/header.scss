@@ -7,12 +7,17 @@ $breadcrumb-color : #414042;
 $breadcrumb-hover-color : #000;
 
 header {
+  &:before{
+    display: block;
+    content: '';
+    padding-top: 105px;
+  }
   .header {
+    @include position(fixed, 0 null null 0);
+    z-index: 255;
+    width: 100%;
     background-color: #fff;
-    @include display(flex);
-    @include align-items(center);
-    @include justify-content(center);
-    font-family: "Open Sans";
+    font-family: "Open Sans", serif;
     a{
       font-size: 14px;
       &:link, &:active, &:visited{
@@ -27,6 +32,16 @@ header {
       }
     }
     border-bottom: solid 1px $header-border-color;
+
+    &__container{
+      position: relative;
+      z-index: 256;
+      @include display(flex);
+      @include flex-direction(column);
+      @include align-items(center);
+      @include justify-content(center);
+      width: 100%;
+    }
 
     &__bar {
       @include display(flex);
@@ -74,7 +89,6 @@ header {
             text-decoration: underline;
           }
         }
-
         &:last-of-type {
           margin-right: 0;
         }
@@ -139,16 +153,21 @@ header {
   }
 
   .subpages_container {
-    display: none;
+    @include position(fixed, -95px null null 0);
+    width: 100%;
+    height: 200px;
+    background-color: #ebebeb;
   }
 
   .navigation {
-    background-color: #ebebeb;
+    @include position(absolute, 0 null null 0);
+    z-index: 128;
     @include display(flex);
     @include align-items(center);
     @include justify-content(center);
-    font-family: "Open Sans";
-
+    width: 100%;
+    opacity: 0;
+    font-family: "Open Sans", serif;
     a{
       font-size: 14px;
       &:link, &:active, &:visited{
@@ -161,22 +180,21 @@ header {
     }
 
     &__bar {
+      @include display(inline-flex);
       height: 105px;
       max-width: 920px;
       width: 100%;
-      padding-left: 20px;
-      padding-right: 20px;
-      @include display(inline-flex);
-      padding-top: 20px;
+      margin: 0 auto;
+      padding: 20px 20px 0;
 
       &__list {
         width: 25%;
 
         &__title {
-          font-weight: bold;
-          text-transform: uppercase;
           padding-bottom: 10px;
           font-size: 15px;
+          font-weight: bold;
+          text-transform: uppercase;
         }
         ul {
           padding: 0;

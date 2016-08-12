@@ -2,9 +2,15 @@
 
 import * as $ from "jquery";
 
-let slideToggleAvailable: boolean = true;
-let subpagesMenuVisible: boolean = false;
-let activeSubmenu: string = "";
+// let slideToggleAvailable: boolean = true;
+let
+    subPagesMenuVisible: boolean = false,
+    activeSubMenu: string = "",
+    mouseOver:string = 'mouseover ',
+    mouseLeave:string = 'mouseleave',
+    headerBarHeight:number = $('.header').height(),
+    $subPagesContainer = $('.subpages_container'),
+    subPageContainerInitialPosition:number = headerBarHeight - $subPagesContainer.height() ;
 
 $(document).ready(() => {
     $(".header__main-menu__item")
@@ -12,33 +18,63 @@ $(document).ready(() => {
         .forEach(menuItem => {
             let menuContent: string = "#" + menuItem.id + "_content";
             if ( $(menuContent)[0] ) {
-                $(menuItem).on('mouseover ' , () => {
-                    if(activeSubmenu != menuContent && subpagesMenuVisible && slideToggleAvailable) {
-                        $(activeSubmenu).hide();
-                        $(menuContent).show();
-                        activeSubmenu = menuContent;
-                    }
-                    else if(slideToggleAvailable && activeSubmenu != menuContent) {
-                        slideToggleAvailable = false;
-                        subpagesMenuVisible = !subpagesMenuVisible;
-                        $(menuContent)
-                            .slideToggle(200, () => {
-                                slideToggleAvailable = true;
-                                activeSubmenu = menuContent;
-                            });
+                $(menuItem).on(mouseOver , () => {
+                    if(activeSubMenu != menuContent ){
+                        if(!subPagesMenuVisible){
+                            subPagesMenuVisible = true;
+                            activeSubMenu = menuContent;
+                            $subPagesContainer
+                                .stop()
+                                .animate({top: headerBarHeight}, 200 )
+                                .on(mouseLeave , () => {
+                                    $subPagesContainer
+                                        .stop()
+                                        .animate({top: subPageContainerInitialPosition}, 200 , ()=> {$subPagesContainer.removeAttr('style')} )
+                                        .off(mouseLeave);
+                                    $(activeSubMenu)
+                                        .stop()
+                                        .animate({
+                                            opacity: 0
+                                        } , 200 , () => {
+                                            $(activeSubMenu).removeAttr('style');
+                                        });
+                                    activeSubMenu = '';
+                                    subPagesMenuVisible = false;
+                                });
+                            $(activeSubMenu)
+                                .stop()
+                                .animate({
+                                    opacity: 1
+                                } , 200);
+
+                        }
+                        else{
+                            $(activeSubMenu)
+                                .animate({
+                                    opacity: 0
+                                }, 100 , () => {
+                                    $(activeSubMenu).removeAttr('style');
+                                    $(menuContent).animate({
+                                        opacity: 1
+                                    } , 100);
+                                    activeSubMenu = menuContent;
+                                })
+                        }
                     }
                 });
             } else {
-                $(menuItem).on('mouseover ' , () => {
-                    if(slideToggleAvailable) {
-                        slideToggleAvailable = false;
-                        subpagesMenuVisible = !subpagesMenuVisible;
-                        $(activeSubmenu)
-                            .slideToggle(200, () => {
-                                slideToggleAvailable = true;
-                                activeSubmenu = menuContent;
-                            });
-                    }
+                $(menuItem).on(mouseOver , () => {
+                    $subPagesContainer
+                        .stop()
+                        .animate({top: subPageContainerInitialPosition}, 200 , ()=> {$subPagesContainer.removeAttr('style')} );
+                    $(activeSubMenu)
+                        .animate({
+                            opacity: 0
+                        }, 100 , () => {
+                            $(activeSubMenu).removeAttr('style');
+                        });
+                    activeSubMenu = '';
+                    subPagesMenuVisible = false;
                 });
             }
         })
