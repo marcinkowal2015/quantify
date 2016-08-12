@@ -36,13 +36,14 @@ $(document).ready(() => {
                                         .animate({
                                             opacity: 0
                                         } , 200 , () => {
-                                            $(activeSubMenu).removeAttr('style');
+                                            $(activeSubMenu).removeAttr('style').removeClass('active');
                                         });
                                     activeSubMenu = '';
                                     subPagesMenuVisible = false;
                                 });
                             $(activeSubMenu)
                                 .stop()
+                                .addClass('active')
                                 .animate({
                                     opacity: 1
                                 } , 200);
@@ -53,8 +54,12 @@ $(document).ready(() => {
                                 .animate({
                                     opacity: 0
                                 }, 100 , () => {
-                                    $(activeSubMenu).removeAttr('style');
-                                    $(menuContent).animate({
+                                    $(activeSubMenu)
+                                        .removeAttr('style')
+                                        .removeClass('active');
+                                    $(menuContent)
+                                        .addClass('active')
+                                        .animate({
                                         opacity: 1
                                     } , 100);
                                     activeSubMenu = menuContent;
@@ -71,7 +76,9 @@ $(document).ready(() => {
                         .animate({
                             opacity: 0
                         }, 100 , () => {
-                            $(activeSubMenu).removeAttr('style');
+                            $(activeSubMenu)
+                                .removeAttr('style')
+                                .removeClass('active');
                         });
                     activeSubMenu = '';
                     subPagesMenuVisible = false;

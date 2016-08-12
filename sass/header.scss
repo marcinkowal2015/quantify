@@ -162,9 +162,12 @@ header {
   .navigation {
     @include position(absolute, 0 null null 0);
     z-index: 128;
-    @include display(flex);
-    @include align-items(center);
-    @include justify-content(center);
+    display: none;
+    &.active{
+      @include display(flex);
+      @include align-items(center);
+      @include justify-content(center);
+    }
     width: 100%;
     opacity: 0;
     font-family: "Open Sans", serif;
