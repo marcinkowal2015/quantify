@@ -1,1 +1,1 @@
-<?php
+This is type 2

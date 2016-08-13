@@ -1,5 +1,7 @@
 <?php get_header() ?>
 
-This is home page
+<div class="carousel-container">
+
+</div>
 
 <?php get_footer() ?>

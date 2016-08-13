@@ -4,16 +4,18 @@ Author: LonelyLama
 Author URI: http://lonelylama.co/
 Version: 1.0
 */
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+
 body, html{
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  @include display(flex);
+  @include flex-direction(column);
   min-height: 100vh;
 }
 
 .body-content{
-  flex: 1;
+  @include flex(1);
 }
 
 @font-face {

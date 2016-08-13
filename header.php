@@ -115,7 +115,4 @@
         </div>
     <?php }?>
 </header>
-<section class="">
-
-</section>
 <section class="body-content">

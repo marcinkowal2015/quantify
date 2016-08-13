@@ -1,0 +1,26 @@
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+
+.carousel{
+  &-container{
+  }
+  .wpsisac-slick-slider{
+    &.design-2 {
+      .slick-image-slide {
+        .slide-wrap {
+          .readmore {
+            a.slider-readmore {
+              padding: 5px 10px;
+              color: #000;
+              text-shadow: 0 1px 2px #000;
+              border: 1px solid #fff;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+
+
+  }
+}
+

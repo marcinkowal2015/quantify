@@ -48,6 +48,28 @@ function arphabet_widgets_init() {
 }
 add_action( 'widgets_init', 'arphabet_widgets_init' );
 
+/**
+ * Register a custom menu page.
+ */
+/** Step 2 (from text above). */
+add_action( 'admin_menu', 'my_plugin_menu' );
+
+/** Step 1. */
+function my_plugin_menu() {
+    add_menu_page( 'Ustawienia głównego slidera', 'Główny slider', 'manage_options', 'quantify_main_slider', 'slider_options_display' , null , 6 );
+}
+
+/** Step 3. */
+function slider_options_display() {
+    if ( !current_user_can( 'manage_options' ) )  {
+        wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+    }
+    echo '<div class="wrap">';
+    echo '<h1>Ustawienia głównego slidera</h1>';
+    echo '<p>Here is where the form would go if I actually had options.</p>';
+    echo '</div>';
+}
+
 /**********************************************************
  * Custom functions
  */
