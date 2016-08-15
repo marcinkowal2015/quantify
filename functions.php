@@ -2,7 +2,6 @@
 
     //Add thumbnails support
     add_theme_support('post-thumbnails');
-    add_image_size("dupa", 300, 300);
 
     //Add navigation menus
 //    register_nav_menus(array(
@@ -138,6 +137,8 @@ function get_top_ancestor_id(){
     }
     return $post->ID;
 }
+
+add_post_type_support( 'page', 'excerpt' );
 
 /**
  * Get page by ID
