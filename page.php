@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-This is single page
-
 <?php console_log( get_the_category() ) ?>
 <?php $category_objc =  get_the_category()[0];
 console_log($category_objc);

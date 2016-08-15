@@ -2,6 +2,7 @@
 
     //Add thumbnails support
     add_theme_support('post-thumbnails');
+    add_image_size("dupa", 300, 300);
 
     //Add navigation menus
 //    register_nav_menus(array(
