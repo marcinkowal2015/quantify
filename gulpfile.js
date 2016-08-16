@@ -24,7 +24,7 @@ gulp.task("bundle-ts", function () {
   return browserify({
     basedir: '.',
     debug: true,
-    entries: ['ts/main.ts'],
+    entries: ['ts/main.ts' ,'ts/home.ts'],
     cache: {},
     packageCache: {}
   })

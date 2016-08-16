@@ -30,6 +30,17 @@ function register_jquery() {
 }
 add_action( 'init', 'register_jquery' );
 
+function register_cdn(){
+    wp_register_script('slick.js' , 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js');
+    wp_enqueue_script('slick.js');
+    wp_register_style('slick.css' , 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css');
+    wp_enqueue_style('slick.css');
+    wp_register_style('slick-theme.css' , 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css');
+    wp_enqueue_style('slick-theme.css');
+}
+add_action('wp_enqueue_scripts' , 'register_cdn');
+
+
 /**
  * Register our sidebars and widgetized areas.
  *
@@ -49,26 +60,24 @@ function arphabet_widgets_init() {
 add_action( 'widgets_init', 'arphabet_widgets_init' );
 
 /**
- * Register a custom menu page.
+ * Register slide post
  */
-/** Step 2 (from text above). */
-add_action( 'admin_menu', 'my_plugin_menu' );
 
-/** Step 1. */
-function my_plugin_menu() {
-    add_menu_page( 'Ustawienia głównego slidera', 'Główny slider', 'manage_options', 'quantify_main_slider', 'slider_options_display' , null , 6 );
+function create_post_type() {
+    register_post_type( 'slajd',
+        array(
+            'labels' => array(
+                'name' => __( 'Slajdy' ),
+                'singular_name' => __( 'Slajd' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'menu_position' => 5,
+            'supports' => array( 'title', 'editor', 'thumbnail' )
+        )
+    );
 }
-
-/** Step 3. */
-function slider_options_display() {
-    if ( !current_user_can( 'manage_options' ) )  {
-        wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-    }
-    echo '<div class="wrap">';
-    echo '<h1>Ustawienia głównego slidera</h1>';
-    echo '<p>Here is where the form would go if I actually had options.</p>';
-    echo '</div>';
-}
+add_action('init' , 'create_post_type');
 
 /**********************************************************
  * Custom functions
