@@ -11,6 +11,8 @@ if ( $category_objc->slug == 'type-02'){
     get_template_part('type04');
 } else if ($category_objc->slug == 'type-05'){
     get_template_part('type05');
+} else if ( $category_objc->slug == 'type-06' ){
+    get_template_part('type06');
 }
     ?>
 

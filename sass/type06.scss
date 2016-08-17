@@ -1,0 +1,81 @@
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+
+.geographical-coverage{
+
+  font-family: "Open Sans", serif;
+  color: #414042;
+
+  &__map{
+    position: relative;
+    width: 100%;
+    max-width: 920px;
+    height: 430px;
+    padding: 0 20px;
+    margin: 0 auto 60px;
+    overflow: hidden;
+    img{
+      position: absolute;
+      visibility: hidden;
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__tabs{
+    position: relative;
+    @include display(flex);
+    @include flex-direction(row);
+    width: 100%;
+    height: 100%;
+
+    &__container{
+      @include display(flex);
+      @include flex-direction(row);
+      width: 100%;
+      max-width: 920px;
+      &__side-border{
+        @include flex(1);
+        border-bottom: solid 1px rgba(0,0,0,0.5);
+      }
+    }
+
+    &__item{
+      display: block;
+      padding: 10px;
+      border: solid 1px rgba(0,0,0,0.5);
+
+      font-size: 14px;
+      text-transform: uppercase;
+      &.active{
+        border-bottom: none;
+      }
+      &:hover{
+        cursor: pointer;
+      }
+    }
+
+    &__side-border{
+      @include flex(1);
+      border-bottom: solid 1px rgba(0,0,0,0.5);
+    }
+  }
+
+  &__tab-content{
+    position: relative;
+    width: 100%;
+    max-width: 920px;
+    padding: 20px 20px 0;
+    margin: 0 auto;
+    height: 170px;
+
+    &__item{
+      position: absolute;
+      width: 100%;
+      box-sizing: content-box;
+      visibility: hidden;
+      background-color: white;
+
+      font-size: 14px;
+    }
+  }
+}

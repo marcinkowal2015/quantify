@@ -143,9 +143,10 @@ header {
       max-width: 920px;
       margin: 0 auto;
       h1{
-        font-family: "Open Sans";
         margin: 0;
         padding: 0;
+        text-transform: uppercase;
+        font-family: "Open Sans";
         font-size: 24px;
         color: #4f555b;
       }
@@ -154,6 +155,7 @@ header {
 
   .subpages_container {
     @include position(fixed, -95px null null 0);
+    z-index: 128;
     width: 100%;
     height: 200px;
     background-color: #ebebeb;
