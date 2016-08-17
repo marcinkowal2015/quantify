@@ -9,6 +9,9 @@ if ( $category_objc->slug == 'type-02'){
     get_template_part('type03');
 } else if ( $category_objc->slug == 'type-04') {
     get_template_part('type04');
-}?>
+} else if ($category_objc->slug == 'type-05'){
+    get_template_part('type05');
+}
+    ?>
 
 <?php get_footer(); ?>

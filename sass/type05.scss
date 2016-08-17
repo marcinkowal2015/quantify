@@ -1,0 +1,53 @@
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+
+.assets{
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  @include flex-flow(wrap);
+  width: 100%;
+  max-width: 920px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  font-family: "Open Sans", serif;
+
+  &__item{
+    width: 30%;
+    margin-bottom: 25px;
+    &__image{
+      position: relative;
+      height: 300px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      img{
+        height: 100%;
+        width: auto;
+      }
+    }
+
+    &__title{
+      @include position(absolute, null null 0 0);
+      h2{
+        margin: 0;
+        padding: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
+      }
+    }
+
+    &__content{
+      margin: 0;
+      padding: 0 20px;
+      font-size: 14px;
+      color: #414042;
+      p{
+        margin: 0;
+        padding-bottom: 40px;
+      }
+    }
+
+  }
+}
