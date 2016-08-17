@@ -76,6 +76,18 @@ function create_post_type() {
             'supports' => array( 'title', 'editor', 'thumbnail' , 'page-attributes' )
         )
     );
+    register_post_type( 'employee',
+        array(
+            'labels' => array(
+                'name' => __( 'Pracownicy' ),
+                'singular_name' => __( 'Pracownik' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'menu_position' => 5,
+            'supports' => array( 'title', 'editor', 'thumbnail' , 'page-attributes' )
+        )
+    );
 }
 add_action('init' , 'create_post_type');
 

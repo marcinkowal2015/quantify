@@ -49,7 +49,8 @@
                 <?php $permalink = ( get_field('read-more-link') ) ? get_field('read-more-link') : $permalink ?>
                 <span><?php echo $permalink ?></span>
             <?php endwhile;
-            } ?>
+            }
+            wp_reset_query();?>
             <a id="read-more">Dowiedz się więcej</a>
         </div>
     </div>

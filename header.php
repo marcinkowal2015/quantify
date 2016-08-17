@@ -95,7 +95,7 @@
                 $page_path = array( $current_page );
                 $tmp = $current_page;
                 while( $tmp->post_parent != 0){
-                    $tmp =  get_post( $current_page->post_parent);
+                    $tmp =  get_post( $tmp->post_parent);
                     array_push( $page_path , $tmp);
                 }
                 $page_path = array_reverse($page_path);

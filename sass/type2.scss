@@ -45,20 +45,28 @@
   &__excerpt {
     @include display(flex);
     &__content {
+      color: #414042;
+      font-size: 14px;
       background: #FFFFFF;
       width: 60%
     }
 
     &__text {
-      padding: 10px;
+      padding: 30px 20px 10px;
       font-size: 15px;
     }
 
     &__more {
-      padding: 10px;
-      font-weight: bold;
-      color: #ff69f4;
-      font-size: 15px;
+      padding: 10px 20px 0px;
+      a{
+        text-decoration: none;
+        font-weight: bold;
+        color: #b788ff;
+        font-size: 14px;
+        &:hover{
+          opacity: 0.7;
+        }
+      }
     }
   }
 

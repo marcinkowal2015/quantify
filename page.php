@@ -5,6 +5,10 @@
 console_log($category_objc);
 if ( $category_objc->slug == 'type-02'){
     get_template_part('type02');
+} else if ( $category_objc->slug == 'type-03' ){
+    get_template_part('type03');
+} else if ( $category_objc->slug == 'type-04') {
+    get_template_part('type04');
 }?>
 
 <?php get_footer(); ?>
