@@ -16,6 +16,7 @@ body, html{
 
 .body-content{
   @include flex(1);
+  position: relative;
 }
 
 @font-face {
