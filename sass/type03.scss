@@ -7,30 +7,30 @@
   width: 100%;
   font-family: "Open Sans";
 
-  &-container {
+  &__container {
     max-width: 920px;
     padding: 0 20px 0  20px;
     width: 100%;
     @include display(flex);
   }
 
-  &-content {
+  &__content {
     display: flex;
     flex-direction: column;
     width: 66.66%;
   }
 
-  &-navigation {
+  &__navigation {
     display: flex;
     width: 33.33%;
   }
 
-  &-featured-image{
+  &__featured-image{
     width: 100%;
     height: 300px;
   }
 
-  &-image-container {
+  &__image-container {
     padding-right: 20px;
   }
 }
