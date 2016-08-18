@@ -1,4 +1,6 @@
 </section>
+<?php wp_reset_query(); ?>
+<?php console_log(is_home()) ?>
 <?php if ( !is_home()  ) { ?>
     <footer>
         <div class="footer-wrap">
