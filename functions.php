@@ -37,6 +37,10 @@ function register_cdn(){
     wp_enqueue_style('slick.css');
     wp_register_style('slick-theme.css' , 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css');
     wp_enqueue_style('slick-theme.css');
+    wp_register_script('selectize' , 'https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/js/standalone/selectize.js');
+    wp_enqueue_script('selectize');
+    wp_register_style('selectize.css' , 'https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.2/css/selectize.min.css');
+    wp_enqueue_style('selectize.css');
 }
 add_action('wp_enqueue_scripts' , 'register_cdn');
 
@@ -86,6 +90,19 @@ function create_post_type() {
             'has_archive' => true,
             'menu_position' => 5,
             'supports' => array( 'title', 'editor', 'thumbnail' , 'page-attributes' )
+        )
+    );
+    register_post_type( 'haslo_slownika',
+        array(
+            'labels' => array(
+                'name' => __( 'Hasła słownika' ),
+                'singular_name' => __( 'Hasło słownika' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'menu_position' => 5,
+            'capability_type' => 'post',
+            'supports' => array( 'title', 'editor' , 'page-attributes' )
         )
     );
 }

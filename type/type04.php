@@ -7,7 +7,6 @@ $args = array(
 wp_reset_query();
 $media_query = null;
 $media_query = new WP_Query($args);
-console_log($media_query);
 if ($media_query->have_posts()){
     while( $media_query->have_posts()) : $media_query->the_post(); ?>
         <div class="employee">
