@@ -6,6 +6,7 @@
     "browserify": "^13.1.0",
     "browserify-shim": "^3.8.12",
     "gulp": "latest",
+    "gulp-clean": "^0.3.2",
     "gulp-clean-css": "latest",
     "gulp-concat": "latest",
     "gulp-rename": "latest",
@@ -15,7 +16,9 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "browserify": {
-    "transform": [ "browserify-shim" ]
+    "transform": [
+      "browserify-shim"
+    ]
   },
   "browserify-shim": {
     "jquery": "global:$"

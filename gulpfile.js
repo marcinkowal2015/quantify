@@ -6,7 +6,8 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     browserify = require("browserify"),
     source = require('vinyl-source-stream'),
-    tsify = require("tsify");
+    tsify = require("tsify"),
+    clean = require("gulp-clean");
 
 gulp.task('sass', function () {
   return gulp.src('./sass/**/*.scss')
@@ -36,4 +37,16 @@ gulp.task("bundle-ts", function () {
 
 gulp.task('watch-ts' ,function () {
   gulp.watch('./ts/**/*.ts' , ['bundle-ts']);
+});
+
+gulp.task('clean', function() {
+  gulp.src('../quantify-deploy', {read: false})
+      .pipe(clean({force: true}));
+});
+
+gulp.task('deploy', ['clean', 'sass', 'bundle-ts'], function () {
+  gulp.src(['./style.css', './*.php']).pipe(gulp.dest('../quantify-deploy'));
+  gulp.src('./js/*.*').pipe(gulp.dest('../quantify-deploy/js'));
+  gulp.src('./img/*.*').pipe(gulp.dest('../quantify-deploy/img'));
+  gulp.src('./fonts/*.*').pipe(gulp.dest('../quantify-deploy/fonts'));
 });
