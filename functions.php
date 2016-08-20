@@ -108,6 +108,284 @@ function create_post_type() {
 }
 add_action('init' , 'create_post_type');
 
+/**
+ * Advanced Custom Fields
+ */
+if(function_exists("register_field_group"))
+{
+    register_field_group(array (
+        'id' => 'acf_artykuly',
+        'title' => 'Artykuły',
+        'fields' => array (
+            array (
+                'key' => 'field_57b58d19460be',
+                'label' => 'Autor',
+                'name' => 'autor',
+                'type' => 'post_object',
+                'post_type' => array (
+                    0 => 'employee',
+                ),
+                'taxonomy' => array (
+                    0 => 'all',
+                ),
+                'allow_null' => 0,
+                'multiple' => 0,
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'post',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+    register_field_group(array (
+        'id' => 'acf_czytaj-wiecej',
+        'title' => 'Czytaj więcej...',
+        'fields' => array (
+            array (
+                'key' => 'field_57b3f8733f9e1',
+                'label' => 'Czytaj więcej...',
+                'name' => 'read-more-link',
+                'type' => 'page_link',
+                'instructions' => 'Wprowadź link do którego użytkownik zostanie przekierowany po kliknięciu " Dowiedz się więcej" na stronie głównej. ',
+                'post_type' => array (
+                    0 => 'all',
+                ),
+                'allow_null' => 0,
+                'multiple' => 0,
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'slajd',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+    register_field_group(array (
+        'id' => 'acf_hasla-slownika',
+        'title' => 'Hasła słownika',
+        'fields' => array (
+            array (
+                'key' => 'field_57b6ae8a4845e',
+                'label' => 'Usługa',
+                'name' => 'usluga',
+                'type' => 'post_object',
+                'instructions' => 'Link do strony usługi, której dotyczy hasło ',
+                'post_type' => array (
+                    0 => 'page',
+                ),
+                'taxonomy' => array (
+                    0 => 'all',
+                ),
+                'allow_null' => 0,
+                'multiple' => 0,
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'haslo_slownika',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+    register_field_group(array (
+        'id' => 'acf_pracownicy',
+        'title' => 'Pracownicy',
+        'fields' => array (
+            array (
+                'key' => 'field_57b42adf93aa9',
+                'label' => 'Stanowisko',
+                'name' => 'stanowisko',
+                'type' => 'text',
+                'instructions' => 'Stanowisko pracownika',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array (
+                'key' => 'field_57b42b0ff9845',
+                'label' => 'Referencja pracownika',
+                'name' => 'referencja_pracownika',
+                'type' => 'textarea',
+                'instructions' => 'Komentarz zewnętrznej osoby na temat pracownika',
+                'default_value' => '',
+                'placeholder' => '',
+                'maxlength' => '',
+                'rows' => '',
+                'formatting' => 'br',
+            ),
+            array (
+                'key' => 'field_57b42b51f9846',
+                'label' => 'Autor referencji',
+                'name' => 'autor_referencji',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array (
+                'key' => 'field_57b42b8ff9847',
+                'label' => 'Stanowisko autora',
+                'name' => 'stanowisko_autora',
+                'type' => 'text',
+                'instructions' => 'Stanowisko autora referencji pracownika',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array (
+                'key' => 'field_57b42badf9848',
+                'label' => 'Zdjęcie autora referencji',
+                'name' => 'zdjęcie_autora_referencji',
+                'type' => 'image',
+                'save_format' => 'object',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'employee',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array (
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+    register_field_group(array (
+        'id' => 'acf_uslugi',
+        'title' => 'Usługi',
+        'fields' => array (
+            array (
+                'key' => 'field_57b487a98fd7a',
+                'label' => 'B2B',
+                'name' => 'b2b',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+            array (
+                'key' => 'field_57b489ab6a280',
+                'label' => 'B2C',
+                'name' => 'b2c',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+            array (
+                'key' => 'field_57b5498005f5c',
+                'label' => 'Słownik badawczy',
+                'name' => 'slownik_badawczy',
+                'type' => 'post_object',
+                'instructions' => 'Link do odpowiedniej usługi w słowniku badawczym',
+                'post_type' => array (
+                    0 => 'page',
+                ),
+                'taxonomy' => array (
+                    0 => 'all',
+                ),
+                'allow_null' => 0,
+                'multiple' => 0,
+            ),
+            array (
+                'key' => 'field_57b549b705f5d',
+                'label' => 'Artykuł',
+                'name' => 'artykul',
+                'type' => 'post_object',
+                'instructions' => 'Link do odpowiedniego artykułu o usłudze',
+                'post_type' => array (
+                    0 => 'page',
+                ),
+                'taxonomy' => array (
+                    0 => 'all',
+                ),
+                'allow_null' => 0,
+                'multiple' => 0,
+            ),
+        ),
+        'location' => array (
+            array (
+                array (
+                    'param' => 'post_category',
+                    'operator' => '==',
+                    'value' => '13',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array (
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array (
+                0 => 'the_content',
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}
+
+
+
 /**********************************************************
  * Custom functions
  */
