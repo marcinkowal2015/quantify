@@ -1,0 +1,66 @@
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+
+.contact{
+
+  @include display(flex);
+  @include flex-direction(row);
+
+  width: 100%;
+  max-width: 920px;
+  padding: 0 20px 50px;
+  margin: 0 auto;
+
+  font-family: "Open Sans", serif;
+  color: #414042;
+
+  &__main {
+    @include flex(2);
+    @include display(flex);
+    @include flex-direction(row);
+    @include align-items(flex-start);
+
+    margin-right: 20px;
+
+    &__thumbnail{
+      img{
+        width: 270px;
+        height: 270px;
+      }
+    }
+
+    &__info{
+      @include flex(1);
+      @include display(flex);
+      @include flex-direction(column);
+      @include justify-content(space-between);
+
+      height: 270px;
+      padding-left: 30px;
+
+      p{
+        margin: 0;
+      }
+      &__upper{
+        &__name{
+          padding-bottom: 5px;
+          font-size: 24px;
+        }
+        &__job, &__phone{
+          padding-bottom: 5px;
+          font-size: 12px;
+        }
+      }
+      &__lower{
+        font-size: 14px;
+        &__email-1{
+          padding-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  &__side {
+    @include flex(1);
+
+  }
+}
