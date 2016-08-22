@@ -1,4 +1,4 @@
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "general";
 
 $header-border-color : rgba( 0, 0, 0, 0.2 );
 $header-menu-item-color: #414042;
@@ -19,7 +19,7 @@ header {
     background-color: #fff;
     font-family: "Open Sans", serif;
     a{
-      font-size: 14px;
+      @extend .font-size-14;
       &:link, &:active, &:visited{
         color: $header-menu-item-color;
         text-decoration: none;
@@ -47,11 +47,13 @@ header {
       @include display(flex);
       @include align-items(center);
       @include justify-content(space-between);
+
       height: 105px;
-      max-width: 920px;
+      max-width: 960px;
       width: 100%;
       padding-left: 20px;
       padding-right: 20px;
+      box-sizing: border-box;
     }
 
     &__navigation {
@@ -61,7 +63,7 @@ header {
 
     &__language {
       text-transform: uppercase;
-      font-size: 14px;
+      @extend .font-size-14;
     }
 
     &__language__pl {
@@ -101,15 +103,16 @@ header {
     &__bar {
       @include display( flex );
       @include align-items(center);
+      box-sizing: border-box;
       height: 50px;
-      max-width: 920px;
+      max-width: 960px;
       width: 100%;
       margin: 0 auto;
       padding-left: 20px;
       padding-right: 20px;
       a{
         font-family: "Open Sans";
-        font-size: 14px;
+        @extend .font-size-14;
         text-decoration: none;
         &:link,&:visited,&:active{
           color: $breadcrumb-color;
@@ -139,15 +142,17 @@ header {
   .page-title{
     padding: 30px 0;
     &__container{
+      box-sizing: border-box;
       width: 100%;
-      max-width: 920px;
+      max-width: 960px;
       margin: 0 auto;
+      padding: 0 20px;
       h1{
         margin: 0;
         padding: 0;
         text-transform: uppercase;
         font-family: "Open Sans";
-        font-size: 24px;
+        @extend .font-size-24;
         color: #4f555b;
       }
     }
@@ -174,7 +179,7 @@ header {
     opacity: 0;
     font-family: "Open Sans", serif;
     a{
-      font-size: 14px;
+      @extend .font-size-14;
       &:link, &:active, &:visited{
         color: $header-menu-item-color;
         text-decoration: none;
@@ -186,8 +191,9 @@ header {
 
     &__bar {
       @include display(inline-flex);
+      box-sizing: border-box;
       height: 105px;
-      max-width: 920px;
+      max-width: 960px;
       width: 100%;
       margin: 0 auto;
       padding: 20px 20px 0;
@@ -197,14 +203,14 @@ header {
 
         &__title {
           padding-bottom: 10px;
-          font-size: 15px;
+          @extend .font-size-15;
           font-weight: bold;
           text-transform: uppercase;
         }
         ul {
           padding: 0;
           margin: 0;
-          font-size: 13px;
+          @extend .font-size-13;
           list-style: none;
           li:before{
             content: '» ';

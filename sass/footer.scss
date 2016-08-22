@@ -1,27 +1,24 @@
-$bkg-color: #414042;
-$font-family:  "Open Sans";
-$font-color : white;
-$font-hover-color : grey;
+@import "general";
 
-footer{
+footer {
   align-content: center;
   width: 100%;
   height: 100%;
   min-height: 180px;
   background-color: $bkg-color;
   font-family: $font-family;
-  font-size: 12px;
+  @extend .font-size-12;
   color: $font-color;
 
-  .footer{
+  .footer {
 
-    &-wrap{
+    &-wrap {
       max-width: 920px;
       padding: 0 20px;
       margin: 0 auto;
       box-sizing: border-box;
 
-      .footer-menu-wrap{
+      .footer-menu-wrap {
         float: left;
         width: 25%;
         padding-top: 40px;
@@ -33,7 +30,7 @@ footer{
           &:link, &:active, &:visited {
             text-decoration: none;
           }
-          &:hover{
+          &:hover {
             color: $font-hover-color;
           }
         }
@@ -51,7 +48,7 @@ footer{
               &:link, &:active, &:visited {
                 text-decoration: none;
               }
-              &:hover{
+              &:hover {
                 color: $font-hover-color;
               }
             }
@@ -62,15 +59,15 @@ footer{
           }
         }
 
-        .contact-form{
-          h2{
+        .contact-form {
+          h2 {
             margin: 0;
             text-transform: uppercase;
             font-weight: bold;
-            font-size: 12px;
+            @extend .font-size-12;
             padding-bottom: 15px;
           }
-          p{
+          p {
             padding: 0;
             margin: 0;
           }

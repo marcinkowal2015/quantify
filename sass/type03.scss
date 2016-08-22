@@ -1,4 +1,4 @@
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "general.scss";
 
 .type3 {
   @include display(flex);
@@ -8,9 +8,10 @@
   font-family: "Open Sans";
 
   &__container {
-    max-width: 920px;
+    max-width: 960px;
     padding: 0 20px 0  20px;
     width: 100%;
+    box-sizing: border-box;
     @include display(flex);
   }
 

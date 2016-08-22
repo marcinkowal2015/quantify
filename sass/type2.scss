@@ -1,4 +1,4 @@
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "general.scss";
 
 .type2 {
   @include display(flex);
@@ -9,9 +9,10 @@
 }
 
 .type2-container {
-  max-width: 920px;
+  max-width: 960px;
   padding: 0 20px 0  20px;
   width: 100%;
+  box-sizing: border-box;
   @include display(flex);
   @include flex-wrap(wrap);
   //justify-content: center;
@@ -39,21 +40,21 @@
   &__page-title {
     padding: 0 0 10px 20px;
     color: #FFFFFF;
-    font-size: 30px;
+    @extend .font-size-30;
     font-weight: bold;
   }
   &__excerpt {
     @include display(flex);
     &__content {
       color: #414042;
-      font-size: 14px;
+      @extend .font-size-14;
       background: #FFFFFF;
       width: 60%
     }
 
     &__text {
       padding: 30px 20px 10px;
-      font-size: 15px;
+      @extend .font-size-15;
     }
 
     &__more {
@@ -62,7 +63,7 @@
         text-decoration: none;
         font-weight: bold;
         color: #b788ff;
-        font-size: 14px;
+        @extend .font-size-14;
         &:hover{
           opacity: 0.7;
         }

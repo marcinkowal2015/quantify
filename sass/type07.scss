@@ -1,12 +1,13 @@
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "general";
 @import "siblings-menu";
 
 .type07{
   @include display(flex);
   @include flex-direction(row);
 
+  box-sizing: border-box;
   width: 100%;
-  max-width: 920px;
+  max-width: 960px;
   padding: 0 20px 50px;
   margin: 0 auto;
 
@@ -38,7 +39,7 @@
       &__title{
         padding: 0 0 5px 0;
         margin-right: 30px;
-        font-size: 15px;
+        @extend .font-size-15;
 
         &.active{
           border-bottom: solid 1px rgba(0,0,0,0.5);
@@ -54,11 +55,11 @@
       &__item{
 
         display: none;
-        font-size: 14px;
+        @extend .font-size-14;
 
         h2{
           text-transform: uppercase;
-          font-size: 20px;
+          @extend .font-size-21;
         }
         &.active{
           display: block;
@@ -86,7 +87,7 @@
         padding: 10px;
         box-sizing: border-box;
         text-transform: uppercase;
-        font-size: 18px;
+        @extend .font-size-18;
         background-color: #97e3fa;
         color: white;
       }
@@ -94,7 +95,7 @@
         width: 100%;
         padding: 10px;
         box-sizing: border-box;
-        font-size: 15px;
+        @extend .font-size-15;
 
         a {
           color: #4f555b;

@@ -1,11 +1,12 @@
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "general";
 
 .employee{
   @include display(flex);
   @include flex-direction(row);
+  box-sizing: border-box;
   width: 100%;
-  max-width: 920px;
-  height: 215px;
+  max-width: 960px;
+  height: 280px;
   padding: 0 20px 65px;
   margin: 0 auto;
   font-family: "Open Sans", serif;
@@ -37,18 +38,18 @@
       padding-bottom: 15px;
       h2{
         margin: 0;
-        font-size: 24px;
+        @extend .font-size-24;
         line-height: 24px;
       }
     }
     &__job{
       padding-bottom: 40px;
-      font-size: 14px;
+      @extend .font-size-14;
     }
     &__content{
       p{
         margin: 0;
-        font-size: 14px;
+        @extend .font-size-14;
       }
     }
   }
@@ -58,7 +59,7 @@
     &:before{
       content: '"';
     }
-    font-size: 80px;
+    @extend .font-size-80;
     line-height: 51px;
     font-weight: bold;
     color: #55d1f7;
@@ -72,7 +73,7 @@
       @include flex(1);
       font-family: OpenSansLight;
       font-style: italic;
-      font-size: 14px;
+      @extend .font-size-14;
     }
     &__author{
       @include flex(1);
@@ -84,10 +85,10 @@
       }
       &__name{
         padding-bottom: 10px;
-        font-size: 14px;
+        @extend .font-size-14;
       }
       &__job{
-        font-size: 14px;
+        @extend .font-size-14;
       }
       &__image{
         overflow: hidden;

@@ -1,10 +1,11 @@
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "general";
 
 .contact{
 
   @include display(flex);
   @include flex-direction(row);
 
+  box-sizing: border-box;
   width: 100%;
   max-width: 920px;
   padding: 0 20px 50px;
@@ -43,15 +44,15 @@
       &__upper{
         &__name{
           padding-bottom: 5px;
-          font-size: 24px;
+          @extend .font-size-24;
         }
         &__job, &__phone{
           padding-bottom: 5px;
-          font-size: 12px;
+          @extend .font-size-12;
         }
       }
       &__lower{
-        font-size: 14px;
+        @extend .font-size-14;
         &__email-1{
           padding-bottom: 5px;
         }

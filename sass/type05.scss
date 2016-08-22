@@ -1,12 +1,13 @@
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "general";
 
 .assets{
   @include display(flex);
   @include flex-direction(row);
   @include justify-content(space-between);
   @include flex-flow(wrap);
+  box-sizing: border-box;
   width: 100%;
-  max-width: 920px;
+  max-width: 960px;
   padding: 0 20px;
   margin: 0 auto;
 
@@ -31,7 +32,7 @@
       h2{
         margin: 0;
         padding: 20px;
-        font-size: 24px;
+        @extend .font-size-24;
         font-weight: bold;
         text-transform: uppercase;
         color: white;
@@ -41,7 +42,7 @@
     &__content{
       margin: 0;
       padding: 0 20px;
-      font-size: 14px;
+      @extend .font-size-14;
       color: #414042;
       p{
         margin: 0;
