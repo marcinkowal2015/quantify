@@ -5,12 +5,12 @@
             <div class="type3__image-container">
                 <img class="type3__featured-image" src="<?php echo $type3_image_url ?>">
             </div>
-            <div>
+            <div class="type3__content__text">
                 <?php echo get_post()->post_content; ?>
             </div>
         </div>
         <div class="type3__navigation">
-            Navigation here
+            <?php get_template_part('siblings-menu') ?>
         </div>
     </div>
 </div>

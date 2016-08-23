@@ -31,7 +31,7 @@
             <div class="contact-form__title">
                 Szybki kontakt
             </div>
-            <?php echo do_shortcode('[sform id=\'169\']') ?>
+            <?php echo do_shortcode('[sform id=\'266\']') ?>
         </div>
     </div>
 </div>

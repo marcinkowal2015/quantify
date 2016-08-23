@@ -1,6 +1,6 @@
 <?php
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/quantify/wp-load.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . 'wp-load.php');
 
 $ID = $_POST['id'] ;
 $the_query = new WP_Query( array(

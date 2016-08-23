@@ -70,7 +70,7 @@ $(document).ready(()=> {
              $content = $('.type08__main__content');
 
          request = $.ajax({
-            url: (window.location.protocol + '//' + window.location.host + '/quantify/wp-content/themes/quantify/ajax/loadDictionaryRecord.php'),
+            url: (window.location.protocol + '//' + window.location.host + '/wp-content/themes/quantify/ajax/loadDictionaryRecord.php'),
             type: 'post',
             data: tmp
          });

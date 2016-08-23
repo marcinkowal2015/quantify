@@ -51,5 +51,5 @@ gulp.task('deploy', ['clean', 'sass', 'bundle-ts'], function () {
   gulp.src('./img/*.*').pipe(gulp.dest(deployTarget + '/img'));
   gulp.src('./fonts/*.*').pipe(gulp.dest(deployTarget + '/fonts'));
   gulp.src('./ajax/*.*').pipe(gulp.dest(deployTarget + '/ajax'));
-  gulp.src('./type/*.*').pipe(gulp.dest(deployTarget + '/theme'));
+  gulp.src('./type/*.*').pipe(gulp.dest(deployTarget + '/type'));
 });

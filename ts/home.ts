@@ -45,16 +45,7 @@ $(document).ready(() => {
                 dots: true,
                 asNavFor: $contentCarousel,
                 autoplay: true,
-                autoplaySpeed: 3000,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrow: false
-                        }
-                    }
-                ]
-
+                autoplaySpeed: 4500,
             });
 
         $(window)

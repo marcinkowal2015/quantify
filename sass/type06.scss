@@ -33,10 +33,9 @@
       @include display(flex);
       @include flex-direction(row);
 
-      box-sizing: border-box;
       width: 100%;
-      max-width: 960px;
-      padding: 0 20px;
+      max-width: 920px;
+
       &__side-border{
         @include flex(1);
         border-bottom: solid 1px rgba(0,0,0,0.5);
@@ -80,6 +79,22 @@
       background-color: white;
 
       @extend .font-size-14;
+
+      padding-bottom: 50px;
+      @extend .font-size-14;
+      h2{
+        text-transform: uppercase;
+        @extend .font-size-21;
+      }
+      ul{
+        list-style: none;
+        li{
+          &:before{
+            content: '►';
+            padding-right: 10px;
+          }
+        }
+      }
     }
   }
 }

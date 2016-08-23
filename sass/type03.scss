@@ -5,7 +5,9 @@
   @include align-items(center);
   @include justify-content(center);
   width: 100%;
-  font-family: "Open Sans";
+
+  font-family: "Open Sans", serif;
+  color: #414042;
 
   &__container {
     max-width: 960px;
@@ -19,6 +21,27 @@
     display: flex;
     flex-direction: column;
     width: 66.66%;
+
+    &__text{
+      padding-top: 20px;
+    }
+
+    padding-bottom: 50px;
+    @extend .font-size-14;
+
+    h2{
+      text-transform: uppercase;
+      @extend .font-size-21;
+    }
+    ul{
+      list-style: none;
+      li{
+        &:before{
+          content: '►';
+          padding-right: 10px;
+        }
+      }
+    }
   }
 
   &__navigation {

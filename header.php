@@ -12,11 +12,13 @@
     <div class="header">
         <div class="header__container">
             <div class="header__bar">
-                <img src="<?php echo get_template_directory_uri()?>/img/logo.png">
+                <a href="<?php bloginfo('url') ?>"><img src="<?php echo get_template_directory_uri()?>/img/logo.png"></a>
                 <div class="header__navigation">
                     <?php
                     $menu_items = get_pages(array(
-                        'parent' => 0
+                        'parent' => 0,
+                        'sort_order' => 'asc',
+                        'sort_column' => 'menu_order',
                     ));
                     custom_menu_listing(array(
                         'menu_items' => $menu_items,
@@ -32,8 +34,8 @@
                         |
                     </div>
                     <div class="header__language">
-                        <span class="header__language__pl">pl</span>
-                        <span>en</span>
+                        <span class="header__language__item"><a href="<?php bloginfo('url') ?>">pl</a></span>
+                        <span class="header__language__item">en</span>
                     </div>
                 </div>
             </div>

@@ -57,6 +57,7 @@
   &__separator{
     @include flex(1);
     &:before{
+      font-family: OpenSansBold;
       content: '"';
     }
     @extend .font-size-80;

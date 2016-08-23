@@ -64,10 +64,20 @@ header {
     &__language {
       text-transform: uppercase;
       @extend .font-size-14;
-    }
 
-    &__language__pl {
-      margin-right: 10px;
+      &__item{
+
+        color: $header-menu-item-color;
+
+        &:first-of-type{
+          margin-right: 10px;
+        }
+        &:hover{
+          text-decoration: underline;
+          cursor: pointer;
+          color: $header-menu-item-hover-color;
+        }
+      }
     }
 
     &__divider {

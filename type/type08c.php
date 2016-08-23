@@ -13,7 +13,7 @@
                 Filtruj hasła
             </div>
             <?php
-            $oferta = get_post(8);
+            $oferta = get_post(188);
             $children = get_pages(array(
                 'parent' => $oferta->ID,
             ));
