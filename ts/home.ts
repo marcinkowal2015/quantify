@@ -1,6 +1,8 @@
 
 $(document).ready(() => {
     let $carousel:any = $('.carousel__container'),
+        $carouselImages:any,
+        $carouselImagesContainer:any,
         $contentCarousel:any = $('.content__carousel'),
         $contentContainer:any = $('.content'),
         $header =  $('.header'),
@@ -10,27 +12,74 @@ $(document).ready(() => {
         // header + rest of the container need to be 100vh
         containerTargetHeight:number = window.innerHeight - $header.height();
 
-    $('.content__read-more__link span').each(function()  {
-        //if this case if you use () => {} construction, the context will not change and so "this" will not link to current element of the jquery array.
-        readMoreLinks.push( this.innerText )
-    });
+    $('.content__read-more__link span')
+        .each( (index:number, el:any) => readMoreLinks.push( el.innerText ) );
     if($carousel[0]){
         $carousel
             // image carousel init resize
             .height(containerTargetHeight)
             // image carousel init
+            .on('init' , () =>{
+                $carouselImagesContainer= $('.carousel__image-item');
+                $carouselImages = $('.carousel__container img');
+
+                $carouselImagesContainer
+                    .height(containerTargetHeight);
+                $carouselImages
+                    .each((index:any, el:any) => {
+                        let $el = $(el);
+
+                        if( ( $el.width() / $el.height() ) < ( $carousel.width() / containerTargetHeight ) ) {
+                            $el
+                                .removeClass('height-100')
+                                .addClass('width-100')
+                        } else {
+                            $el
+                                .removeClass('width-100')
+                                .addClass('height-100');
+                        }
+                    });
+            })
             .slick({
                 arrow : true,
                 dots: true,
                 asNavFor: $contentCarousel,
                 autoplay: true,
-                autoplaySpeed: 3000
+                autoplaySpeed: 3000,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrow: false
+                        }
+                    }
+                ]
 
             });
+
         $(window)
             .on('resize' , () => {
                 containerTargetHeight = window.innerHeight - $header.height();
-                $carousel.height(containerTargetHeight);
+                $carousel
+                    .height(containerTargetHeight);
+                $carouselImagesContainer
+                    .height(containerTargetHeight);
+                $carouselImages
+                    .each((index:any, el:any) => {
+                        let $el = $(el);
+                        console.log( $el.width() + ' ' + $el.height() + ' ' + $carousel.width() + ' ' + containerTargetHeight);
+                        if( ( $el.width() / $el.height() ) < ( $carousel.width() / containerTargetHeight ) ) {
+                            console.log('width-100');
+                            $el
+                                .removeClass('height-100')
+                                .addClass('width-100')
+                        } else {
+                            console.log('height-100');
+                            $el
+                                .removeClass('width-100')
+                                .addClass('height-100');
+                        }
+                    });
             });
     }
     if($contentCarousel[0]){

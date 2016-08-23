@@ -1,0 +1,85 @@
+@import "mediaquery";
+
+// Font sizes with media query
+
+.font-size-80{
+  font-size: 80px;
+  @include sm{
+
+  }
+  @include xs{
+
+  }
+}
+.font-size-30{
+  font-size: 30px;
+  @include sm{
+
+  }
+  @include xs{
+
+  }
+}
+.font-size-24{
+  font-size: 24px;
+  @include sm{
+
+  }
+  @include xs{
+
+  }
+}
+.font-size-21{
+  font-size: 21px;
+  @include sm{
+
+  }
+  @include xs{
+
+  }
+}
+.font-size-18{
+  font-size: 18px;
+  @include sm{
+
+  }
+  @include xs{
+
+  }
+}
+.font-size-15{
+  font-size: 15px;
+  @include sm{
+
+  }
+  @include xs{
+
+  }
+}
+.font-size-14{
+  font-size: 14px;
+  @include sm{
+
+  }
+  @include xs{
+
+  }
+}
+.font-size-13{
+  font-size: 13px;
+  @include sm{
+
+  }
+  @include xs{
+
+  }
+}
+.font-size-12{
+  font-size: 12px;
+  @include sm{
+
+  }
+  @include xs{
+
+  }
+}

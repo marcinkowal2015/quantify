@@ -6,6 +6,7 @@ Version: 1.0
 */
 @import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "mediaquery";
+@import "responsive-fonts";
 
 //Foter variables
 $bkg-color: #414042;
@@ -33,33 +34,4 @@ body, html{
 @font-face {
   font-family: OpenSansLight;
   src: url(./fonts/OpenSans-Light.ttf);
-}
-
-// Font sizes with media query
-.font-size-80{
-  font-size: 80px;
-}
-.font-size-30{
-  font-size: 30px;
-}
-.font-size-24{
-  font-size: 24px;
-}
-.font-size-21{
-  font-size: 21px;
-}
-.font-size-18{
-  font-size: 18px;
-}
-.font-size-15{
-  font-size: 15px;
-}
-.font-size-14{
-  font-size: 18px;
-}
-.font-size-13{
-  font-size: 13px;
-}
-.font-size-12{
-  font-size: 12px;
 }
