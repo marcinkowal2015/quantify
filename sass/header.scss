@@ -1,16 +1,19 @@
 @import "general";
 
-$header-border-color : rgba( 0, 0, 0, 0.2 );
-$header-menu-item-color: #414042;
-$header-menu-item-hover-color: #000;
+$border-color: rgba( 0, 0, 0, 0.2 );
+$menu-main-height: 90px;
+$menu-item-color: #414042;
+$menu-item-hover-color: #8A6BFF ;
+$subpages-menu-height: 200px;
 $breadcrumb-color : #414042;
-$breadcrumb-hover-color : #000;
+$breadcrumb-hover-color : #8A6BFF;
 
 header {
+
   &:before{
     display: block;
     content: '';
-    padding-top: 105px;
+    padding-top: $menu-main-height;
   }
   .header {
     @include position(fixed, 0 null null 0);
@@ -21,17 +24,17 @@ header {
     a{
       @extend .font-size-14;
       &:link, &:active, &:visited{
-        color: $header-menu-item-color;
+        color: $menu-item-color;
         text-decoration: none;
       }
       &:hover{
-        color: $header-menu-item-hover-color;
+        color: $menu-item-hover-color;
       }
       &.active{
         text-decoration: underline;
       }
     }
-    border-bottom: solid 1px $header-border-color;
+    border-bottom: solid 1px $border-color;
 
     &__container{
       position: relative;
@@ -48,7 +51,7 @@ header {
       @include align-items(center);
       @include justify-content(space-between);
 
-      height: 105px;
+      height: $menu-main-height;
       max-width: 960px;
       width: 100%;
       padding-left: 20px;
@@ -57,32 +60,39 @@ header {
     }
 
     &__navigation {
-      @include display(inline-flex);
+
+      @include not_xs{
+        @include display(inline-flex);
+      }
+
+      @include xs{
+        position: fixed;
+        top: -100%;
+        left: 0;
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(center);
+        width: 100%;
+        height: $menu-main-height;
+        background-color: #ebebeb;
+      }
+
       text-transform: uppercase;
     }
 
-    &__language {
-      text-transform: uppercase;
-      @extend .font-size-14;
+    &__burger-menu{
+      @include not_xs{
+        display: none;
+      }
+      @include xs{
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        img{
 
-      &__item{
-
-        color: $header-menu-item-color;
-
-        &:first-of-type{
-          margin-right: 10px;
-        }
-        &:hover{
-          text-decoration: underline;
-          cursor: pointer;
-          color: $header-menu-item-hover-color;
         }
       }
-    }
-
-    &__divider {
-      margin-left: 50px;
-      margin-right: 50px;
     }
 
     &__main-menu {
@@ -94,6 +104,14 @@ header {
         position: relative;
         margin-left: 20px;
         margin-right: 20px;
+        @include sm{
+          margin-left: 12px;
+          margin-right: 12px;
+        }
+        @include xs{
+          margin-left: 5px;
+          margin-right: 5px;
+        }
         cursor: pointer;
 
         a{
@@ -106,10 +124,50 @@ header {
         }
       }
     }
+
+    &__divider {
+      margin-left: 50px;
+      margin-right: 50px;
+      @include sm{
+        margin-left: 30px;
+        margin-right: 30px;
+      }
+      @include xs{
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+    }
+
+    &__language {
+      padding-top: 2px;
+      text-transform: uppercase;
+      @extend .font-size-14;
+
+      &__item{
+
+        color: $menu-item-color;
+
+        &:first-of-type{
+          margin-right: 10px;
+          @include sm{
+            margin-right: 8px;
+          }
+          @include xs{
+            margin-right: 5px;
+          }
+        }
+        &:hover{
+          text-decoration: underline;
+          cursor: pointer;
+          color: $menu-item-hover-color;
+        }
+      }
+    }
+
   }
 
   .breadcrumb{
-    border-bottom: solid 1px $header-border-color;
+    border-bottom: solid 1px $border-color;
     &__bar {
       @include display( flex );
       @include align-items(center);
@@ -169,64 +227,77 @@ header {
   }
 
   .subpages_container {
-    @include position(fixed, -95px null null 0);
-    z-index: 128;
-    width: 100%;
-    height: 200px;
-    background-color: #ebebeb;
-  }
-
-  .navigation {
-    @include position(absolute, 0 null null 0);
-    z-index: 128;
-    display: none;
-    &.active{
-      @include display(flex);
-      @include align-items(center);
-      @include justify-content(center);
-    }
-    width: 100%;
-    opacity: 0;
-    font-family: "Open Sans", serif;
-    a{
-      @extend .font-size-14;
-      &:link, &:active, &:visited{
-        color: $header-menu-item-color;
-        text-decoration: none;
-      }
-      &:hover{
-        color: $header-menu-item-hover-color;
-      }
-    }
-
-    &__bar {
-      @include display(inline-flex);
-      box-sizing: border-box;
-      height: 105px;
-      max-width: 960px;
+    @include not_xs{
+      @include position(fixed, ( $menu-main-height - $subpages-menu-height ) null null 0);
       width: 100%;
-      margin: 0 auto;
-      padding: 20px 20px 0;
+      height: $subpages-menu-height;
+    }
+    @include xs{
+      @include position(fixed, 0 null null -100%);
+      width: 50%;
+      height: 100vh;
+    }
+    z-index: 128;
+    background-color: #E1E8FF;
+    opacity: 0.9;
 
-      &__list {
-        width: 25%;
-
-        &__title {
-          padding-bottom: 10px;
-          @extend .font-size-15;
-          font-weight: bold;
-          text-transform: uppercase;
+    .navigation {
+      @include position(absolute, 0 null null 0);
+      z-index: 128;
+      display: none;
+      &.active{
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(center);
+      }
+      width: 100%;
+      opacity: 0;
+      font-family: "Open Sans", serif;
+      a{
+        @extend .font-size-14;
+        &:link, &:active, &:visited{
+          color: $menu-item-color;
+          text-decoration: none;
         }
-        ul {
-          padding: 0;
-          margin: 0;
-          @extend .font-size-13;
-          list-style: none;
-          li:before{
-            content: '» ';
+        &:hover{
+          color: $menu-item-hover-color;
+        }
+      }
+
+      &__bar {
+        @include display(inline-flex);
+        box-sizing: border-box;
+        height: 105px;
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px 20px 0;
+
+        &__list {
+          width: 25%;
+
+          &__title {
+            padding-bottom: 10px;
+            @extend .font-size-15;
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+          ul {
+            padding: 0;
+            margin: 0;
+            @extend .font-size-13;
+            list-style: none;
+            li{
+              padding-bottom: 2px;
+              &:before{
+                content: '» ';
+              }
+            }
           }
         }
       }
     }
   }
+
+
 }

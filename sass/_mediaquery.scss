@@ -1,10 +1,34 @@
+@mixin lg{
+  @media all and (min-width: 960px ){
+    @content;
+  }
+}
+@mixin not_lg{
+  @media all and (max-width: 959px ){
+    @content;
+  }
+}
+
+@mixin md{
+  @media all and (min-width: 769px ) and (max-width: 959px ){
+    @content;
+  }
+}
+
+@mixin sm{
+  @media all and (min-width: 481px ) and (max-width: 768px ){
+    @content;
+  }
+}
+
 @mixin xs{
   @media all and (max-width: 480px ){
     @content;
   }
 }
-@mixin sm{
-  @media all and (min-width: 481px ) and (max-width: 768px ){
+
+@mixin not_xs{
+  @media all and (min-width: 481px ){
     @content;
   }
 }

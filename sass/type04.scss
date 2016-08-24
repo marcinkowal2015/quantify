@@ -56,14 +56,6 @@
 
   &__separator{
     @include flex(1);
-    &:before{
-      font-family: OpenSansBold;
-      content: '"';
-    }
-    @extend .font-size-80;
-    line-height: 51px;
-    font-weight: bold;
-    color: #55d1f7;
   }
 
   &__reference{

@@ -25,7 +25,9 @@ if ($media_query->have_posts()){
                         <?php the_content() ?>
                     </div>
                 </div>
-                <div class="employee__separator"></div>
+                <div class="employee__separator">
+                    <img src="<?php echo get_template_directory_uri() ?>/img/separator.png">
+                </div>
             </div>
             <div class="employee__reference">
                 <div class="employee__reference__content">

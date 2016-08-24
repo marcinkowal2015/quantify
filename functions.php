@@ -119,6 +119,14 @@ add_action('init' , 'create_post_type');
  * Change order of admin menu items
  */
 
+function custom_menu_order($menu_ord) {
+    if (!$menu_ord) return true;
+    return array('index.php','edit.php?post_type=slajd', 'edit.php?post_type=page' , 'edit.php',);
+}
+
+add_filter('custom_menu_order', 'custom_menu_order');
+add_filter('menu_order', 'custom_menu_order');
+
 /**********************************************************
  * Custom functions
  */

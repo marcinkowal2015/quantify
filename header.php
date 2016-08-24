@@ -38,6 +38,9 @@
                         <span class="header__language__item">en</span>
                     </div>
                 </div>
+                <div class="header__burger-menu">
+                    <!--                        <img src="--><?php //echo get_template_directory_uri()?><!--/img/left-arrow.png">-->
+                </div>
             </div>
         </div>
 
@@ -50,7 +53,11 @@
                 'post_type' => 'page' ,
                 'post_parent' => $page->ID
             ));
-            $page_children = array_reverse(get_page_children( $page->ID, $direct_page_children ));
+            if( $page->ID == 195 ){
+                $page_children = [];
+            } else {
+                $page_children = array_reverse(get_page_children( $page->ID, $direct_page_children ));
+            }
             if ($page_children){
                 ?>
                 <div class="navigation" id="<?php echo "main-menu-item-".$page->ID."_content" ?>">
@@ -61,18 +68,29 @@
                                 'post_type' => 'page' ,
                                 'post_parent' => $child_page->ID
                             ));
-                            $child_page_children = array_reverse(get_page_children( $child_page->ID, $direct_child_children ));
+                            //Check if is geographical coverage
+                            $category_nicename = get_the_category($child_page->ID)[0]->category_nicename;
+                            if($category_nicename == 'type06'){
+                                $geographical_reach = get_posts(array(
+                                    'category_name' => 'zasieg-geograficzny'
+                                ));
+                                $direct_child_children = array_merge($direct_child_children , $geographical_reach);
+                            };
+                            //----------
+                            $direct_child_children = array_reverse($direct_child_children);
                             ?>
 
 
                             <div class="navigation__bar__list">
                                 <div class="navigation__bar__list__title"><a href="<?php echo $child_page->guid ?>"><?php echo $child_page->post_title ?></a></div>
                                 <ul>
-                                    <?php foreach ($child_page_children as $grandchildren){
+                                    <?php foreach ($direct_child_children as $grandchildren){
                                         $grandchildren_page = get_page_by_title($grandchildren->post_title);?>
-
-                                        <li><a href="<?php echo $grandchildren_page->guid ?>"><?php echo $grandchildren->post_title ?></a></li>
-                                        <?php
+                                        <?php if($category_nicename == 'type06') {?>
+                                            <li><a href="<?php echo $child_page->guid . '&title=' . $grandchildren->post_title  ?>"><?php echo $grandchildren->post_title ?></a></li>
+                                        <?php }  else {?>
+                                        <li><a href="<?php echo $grandchildren_page->guid  ?>"><?php echo $grandchildren->post_title ?></a></li>
+                                        <?php }
                                     } ?>
                                 </ul>
                             </div>

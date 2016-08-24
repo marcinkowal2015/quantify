@@ -5,81 +5,90 @@
 .font-size-80{
   font-size: 80px;
   @include sm{
-
+    font-size: 72px;
   }
   @include xs{
-
+    font-size: 65px;
   }
 }
 .font-size-30{
   font-size: 30px;
   @include sm{
-
+    font-size: 27px;
   }
   @include xs{
-
+    font-size: 25px;
   }
 }
 .font-size-24{
   font-size: 24px;
   @include sm{
-
+    font-size: 22px;
   }
   @include xs{
-
+    font-size: 20px;
   }
 }
 .font-size-21{
   font-size: 21px;
   @include sm{
-
+    font-size: 19px;
   }
   @include xs{
-
+    font-size: 17px;
+  }
+}
+.font-size-19{
+  font-size: 19px;
+  @include sm{
+    font-size: 17px;
+  }
+  @include xs{
+    font-size: 15px;
   }
 }
 .font-size-18{
   font-size: 18px;
   @include sm{
-
+    font-size: 16px;
   }
   @include xs{
-
+    font-size: 14px;
   }
 }
 .font-size-15{
   font-size: 15px;
   @include sm{
-
+    font-size: 13px;
   }
   @include xs{
-
+    font-size: 11px;
   }
 }
 .font-size-14{
   font-size: 14px;
   @include sm{
-
+    font-size: 12px;
   }
   @include xs{
-
+    font-size: 10px;
   }
 }
 .font-size-13{
   font-size: 13px;
   @include sm{
-
+    font-size: 11px;
   }
   @include xs{
-
+    font-size: 9px;
   }
 }
 .font-size-12{
   font-size: 12px;
   @include sm{
-
+    font-size: 10px;
   }
   @include xs{
-
+    font-size: 8px;
   }
 }

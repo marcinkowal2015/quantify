@@ -15,7 +15,7 @@
 
   &__item{
     width: 30%;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
     &__image{
       position: relative;
       height: 300px;
@@ -41,6 +41,8 @@
 
     &__content{
       margin: 0;
+      min-height: 120px;
+
       @extend .font-size-14;
       color: #414042;
       p{

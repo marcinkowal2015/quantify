@@ -9,7 +9,10 @@ let
     mouseOver:string = 'mouseover ',
     mouseLeave:string = 'mouseleave',
     headerBarHeight:number = $('.header').height(),
-    $subPagesContainer = $('.subpages_container'),
+    $burgerMenu:JQuery = $('.header__burger-menu'),
+    $headerNavigation:JQuery = $('.header__navigation'),
+    $headerMainMenuItem:JQuery = $('.header__main-menu__item'),
+    $subPagesContainer:JQuery = $('.subpages_container'),
     subPageContainerInitialPosition:number = headerBarHeight - $subPagesContainer.height() ;
 
 $(document).ready(() => {
@@ -84,7 +87,25 @@ $(document).ready(() => {
                     subPagesMenuVisible = false;
                 });
             }
-        })
+        });
+    if($burgerMenu[0]){
+        $burgerMenu.click( () => {
+            $headerNavigation.animate({
+                top: 0
+            }, 500, () => {
+                $(window).click(() => {
+                    $headerNavigation.animate({
+                        top: '-100%'
+                    }, 500, () => {
+                        $(window).off('click')
+                    })
+                })
+            });
+            $headerMainMenuItem.click(() => {
+                console.log('klikable');
+            })
+        });
+    }
 });
 
 

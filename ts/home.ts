@@ -5,6 +5,7 @@ $(document).ready(() => {
         $carouselImagesContainer:any,
         $contentCarousel:any = $('.content__carousel'),
         $contentContainer:any = $('.content'),
+        $contentReadMore:JQuery = $('.content__read-more'),
         $header =  $('.header'),
         $readMore = $('#read-more'),
         activeSlideID = 0,
@@ -45,7 +46,7 @@ $(document).ready(() => {
                 dots: true,
                 asNavFor: $contentCarousel,
                 autoplay: true,
-                autoplaySpeed: 4500,
+                autoplaySpeed: 5000,
             });
 
         $(window)
@@ -96,6 +97,10 @@ $(document).ready(() => {
             activeSlideID = currentSlide.currentSlide;
             $readMore
                 .attr('href' , readMoreLinks[activeSlideID]);
-        })
+        });
+        //Redirect on ReadMore click
+        $contentReadMore.click(()=>{
+            window.location.href = $readMore.attr('href')
+        });
     }
 });
