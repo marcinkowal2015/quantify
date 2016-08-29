@@ -1,6 +1,9 @@
 @import "general";
 
 .siblings-menu{
+  @include xs{
+    display: none;
+  }
   width: 100%;
   padding-bottom: 30px;
   &__parent{
@@ -9,7 +12,7 @@
     box-sizing: border-box;
     text-transform: uppercase;
     @extend .font-size-18;
-    background-color: #97e3fa;
+    background-color: #8A6BFF;
     a{
       color: white;
       text-decoration: none;
@@ -28,10 +31,11 @@
       &:hover{
         color: #8A6BFF;
       }
+      @include underline-animation(#8A6BFF)
     }
 
-    &.active{
-      text-decoration: underline;
+    &.active>a{
+      border-bottom: solid 1px #4f555b;
     }
   }
 }

@@ -102,16 +102,22 @@ $content-carousel-height : 180px;
       width: 100%;
       height: $content-carousel-height;
       &__background{
-        @include position(absolute);
+        position : absolute;
         left: 50%;
-        width: 80%;
+        width: 100%;
         height: $content-carousel-height;
         max-width: 870px;
         margin-left: -435px;
         padding: 0;
         background-color: rgba(0,0,0, 0.5);
         @include transform( skew(-13deg , 0deg) translate(-25px , 0));
-        @include transform-origin(center bottom);
+        @include transform-origin(left bottom);
+        @include not_lg{
+          left: 0;
+          width: 80%;
+          margin-left: 10%;
+          box-sizing: border-box;
+        }
       }
     }
 
@@ -119,6 +125,10 @@ $content-carousel-height : 180px;
     height: $content-carousel-height;
     max-width: 820px;
     padding: 0;
+    @include not_lg{
+      width: 70%;
+    }
+
     text-align: center;
 
     &__item{
@@ -153,7 +163,7 @@ $content-carousel-height : 180px;
     height: 70px;
     margin-top: 120px;
     @include xs{
-      padding-top: 60px;
+      margin-top: 60px;
     }
     &__link{
       position: relative;

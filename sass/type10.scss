@@ -3,7 +3,13 @@
 .contact{
 
   @include display(flex);
-  @include flex-direction(row);
+  @include not_xs{
+    @include flex-direction(row);
+  }
+  @include xs{
+    @include flex-direction(column);
+    text-align: center;
+  }
 
   box-sizing: border-box;
   width: 100%;
@@ -17,10 +23,18 @@
   &__main {
     @include flex(2);
     @include display(flex);
-    @include flex-direction(row);
+    @include not_xs{
+      @include flex-direction(row);
+    }
+    @include xs{
+      @include flex-direction(column);
+    }
     @include align-items(flex-start);
 
     margin-right: 20px;
+    @include xs{
+      margin-right: 0;
+    }
 
     &__thumbnail{
       img{
@@ -29,7 +43,7 @@
       }
     }
 
-    &__info{
+    &__info {
       @include flex(1);
       @include display(flex);
       @include flex-direction(column);
@@ -37,26 +51,53 @@
 
       height: 270px;
       padding-left: 30px;
+      @include xs{
+        box-sizing: border-box;
+        width: 100%;
+        height: auto;
+        padding-left: 0;
+      }
 
-      p{
-        margin: 0;
-      }
-      &__upper{
-        &__name{
-          padding-bottom: 5px;
-          @extend .font-size-24;
-        }
-        &__job, &__phone{
-          padding-bottom: 5px;
-          @extend .font-size-12;
-        }
-      }
-      &__lower{
+      &__content {
         @extend .font-size-14;
-        &__email-1{
-          padding-bottom: 5px;
+        h2 {
+          margin: 0 0 20px;
+          line-height:20px;
+          text-transform: uppercase;
+          @extend .font-size-21;
+        }
+        ul {
+          list-style: none;
+          li {
+            &:before {
+              content: '►';
+              color: #8a6bff;
+              padding-right: 10px;
+            }
+          }
         }
       }
+
+      //  p{
+      //    margin: 0;
+      //  }
+      //  &__upper{
+      //    &__name{
+      //      padding-bottom: 5px;
+      //      @extend .font-size-24;
+      //    }
+      //    &__job, &__phone{
+      //      padding-bottom: 5px;
+      //      @extend .font-size-12;
+      //    }
+      //  }
+      //  &__lower{
+      //    @extend .font-size-14;
+      //    &__email-1{
+      //      padding-bottom: 5px;
+      //    }
+      //  }
+      //}
     }
   }
 

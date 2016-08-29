@@ -4,7 +4,7 @@ $border-color: rgba( 0, 0, 0, 0.2 );
 $menu-main-height: 90px;
 $menu-item-color: #414042;
 $menu-item-hover-color: #8A6BFF ;
-$subpages-menu-height: 200px;
+$subpages-menu-height: 0;
 $breadcrumb-color : #414042;
 $breadcrumb-hover-color : #8A6BFF;
 
@@ -21,19 +21,6 @@ header {
     width: 100%;
     background-color: #fff;
     font-family: "Open Sans", serif;
-    a{
-      @extend .font-size-14;
-      &:link, &:active, &:visited{
-        color: $menu-item-color;
-        text-decoration: none;
-      }
-      &:hover{
-        color: $menu-item-hover-color;
-      }
-      &.active{
-        text-decoration: underline;
-      }
-    }
     border-bottom: solid 1px $border-color;
 
     &__container{
@@ -60,6 +47,20 @@ header {
     }
 
     &__navigation {
+      a{
+        @extend .font-size-14;
+        &:link, &:active, &:visited{
+          color: $menu-item-color;
+          text-decoration: none;
+        }
+        &:hover{
+          color: $menu-item-hover-color;
+        }
+        &.active{
+          border-bottom: 1px solid $menu-item-hover-color;
+        }
+        @include underline-animation($menu-item-hover-color)
+      }
 
       @include not_xs{
         @include display(inline-flex);
@@ -86,11 +87,10 @@ header {
       }
       @include xs{
         display: block;
-        width: 50px;
-        height: 50px;
-        background-color: black;
+        width: 30px;
+        height: 30px;
         img{
-
+          width: 100%;
         }
       }
     }
@@ -113,11 +113,8 @@ header {
           margin-right: 5px;
         }
         cursor: pointer;
-
-        a{
-          &:hover{
-            text-decoration: underline;
-          }
+        &:hover>a{
+          color: $menu-item-hover-color;
         }
         &:last-of-type {
           margin-right: 0;
@@ -144,7 +141,6 @@ header {
       @extend .font-size-14;
 
       &__item{
-
         color: $menu-item-color;
 
         &:first-of-type{
@@ -157,9 +153,11 @@ header {
           }
         }
         &:hover{
-          text-decoration: underline;
           cursor: pointer;
           color: $menu-item-hover-color;
+        }
+        a {
+          @include underline-animation($menu-item-hover-color);
         }
       }
     }
@@ -178,6 +176,7 @@ header {
       margin: 0 auto;
       padding-left: 20px;
       padding-right: 20px;
+
       a{
         font-family: "Open Sans";
         @extend .font-size-14;
@@ -267,11 +266,11 @@ header {
       &__bar {
         @include display(inline-flex);
         box-sizing: border-box;
-        height: 105px;
+        //height: 105px;
         max-width: 960px;
         width: 100%;
         margin: 0 auto;
-        padding: 20px 20px 0;
+        padding: 20px;
 
         &__list {
           width: 25%;

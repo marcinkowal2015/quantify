@@ -3,10 +3,10 @@
 <?php if ( !is_home()  ) { ?>
     <footer>
         <div class="footer-wrap">
-            <?php $top_ancestor_id = get_top_ancestor_id();
+            <?php $top_ancestor_id = 0;
             $wp_query = new WP_Query();
             $direct_page_children = $wp_query->query(array(
-                'post_type' => 'page' ,
+                'post_type' => 'page',
                 'post_parent' => $top_ancestor_id
             ));
             $top_ancestor_children = array_reverse(get_page_children( $top_ancestor_id, $direct_page_children ));

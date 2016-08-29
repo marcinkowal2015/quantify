@@ -4,6 +4,9 @@
 .type07{
   @include display(flex);
   @include flex-direction(row);
+  @include xs{
+    @include flex-direction(column);
+  }
 
   box-sizing: border-box;
   width: 100%;
@@ -17,12 +20,18 @@
   &__main{
     @include flex(2);
     margin-right: 20px;
+    @include xs{
+      margin-right: 0;
+    }
 
     &__image{
       width: 100%;
       height: 300px;
       overflow: hidden;
       margin-bottom: 15px;
+      @include xs{
+        height: auto;
+      }
 
       img{
         height: auto;
@@ -31,21 +40,34 @@
     }
 
     &__business-type{
+
       @include display(flex);
       @include flex-direction(row);
       @include justify-content(flex-start);
       margin-bottom: 25px;
 
       &__title{
+        position: relative;
         padding: 0 0 5px 0;
         margin-right: 30px;
         @extend .font-size-15;
 
         &.active{
-          border-bottom: solid 1px rgba(0,0,0,0.5);
+          border-bottom: solid 1px #808080;
         }
         &:hover{
           cursor: pointer;
+        }
+        .underline-animation{
+          position: absolute;
+          width: 0;
+          height: 100%;
+          border-bottom: 1px solid #808080;
+          @include transition(all 0.5s linear);
+        }
+        &:hover .underline-animation{
+          width: 100%;
+          @include transition(all 0.5 linear);
         }
       }
     }
@@ -68,6 +90,7 @@
           list-style: none;
           li{
             &:before{
+              color: #8a6bff;
               content: '►';
               padding-right: 10px;
             }
@@ -88,7 +111,7 @@
         box-sizing: border-box;
         text-transform: uppercase;
         @extend .font-size-18;
-        background-color: #97e3fa;
+        background-color: #8A6BFF;
         color: white;
       }
       &__link {
@@ -103,10 +126,11 @@
           &:hover {
             color: #8A6BFF;
           }
+          @include underline-animation(#8A6BFF);
         }
 
         &.active {
-          text-decoration: underline;
+          border-bottom: solid 1px #4f555b;
         }
       }
     }

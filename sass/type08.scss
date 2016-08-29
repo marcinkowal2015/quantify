@@ -3,6 +3,9 @@
 .type08{
   @include display(flex);
   @include flex-direction(row);
+  @include xs{
+    @include flex-direction(column)
+  }
 
   box-sizing: border-box;
   width: 100%;
@@ -16,12 +19,18 @@
   &__main{
     @include flex(2);
     margin-right: 20px;
+    @include xs{
+      margin-right: 0;
+    }
 
     &__image{
       width: 100%;
       height: 300px;
       overflow: hidden;
       margin-bottom: 15px;
+      @include xs{
+        height:auto;
+      }
 
       img{
         height: auto;
@@ -40,6 +49,7 @@
         li{
           &:before{
             content: '►';
+            color: #8a6bff;
             padding-right: 10px;
           }
         }
@@ -59,7 +69,7 @@
         box-sizing: border-box;
         text-transform: uppercase;
         font-size: 18px;
-        background-color: #97e3fa;
+        background-color: #8A6BFF;
         color: white;
       }
 
@@ -79,12 +89,13 @@
         box-sizing: border-box;
         font-size: 15px;
 
-        a{
+        a, span{
           color: #4f555b;
           text-decoration: none;
           &:hover{
             color: #8A6BFF;
           }
+          @include underline-animation(#8A6BFF);
         }
         span:hover{
           cursor: pointer;

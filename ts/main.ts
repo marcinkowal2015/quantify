@@ -8,14 +8,18 @@ let
     activeSubMenu: string = "",
     mouseOver:string = 'mouseover ',
     mouseLeave:string = 'mouseleave',
-    headerBarHeight:number = $('.header').height(),
+    // headerBarHeight:number = $('.header').height(),
     $burgerMenu:JQuery = $('.header__burger-menu'),
     $headerNavigation:JQuery = $('.header__navigation'),
     $headerMainMenuItem:JQuery = $('.header__main-menu__item'),
-    $subPagesContainer:JQuery = $('.subpages_container'),
-    subPageContainerInitialPosition:number = headerBarHeight - $subPagesContainer.height() ;
+    $subPagesContainer:JQuery = $('.subpages_container');
 
 $(document).ready(() => {
+    $(window).on('load' , () => {
+        $('.pre-loader').css({
+            display: 'none'
+        })
+    });
     $(".header__main-menu__item")
         .toArray()
         .forEach(menuItem => {
@@ -28,53 +32,32 @@ $(document).ready(() => {
                             activeSubMenu = menuContent;
                             $subPagesContainer
                                 .stop()
-                                .animate({top: headerBarHeight}, 200 )
-                                .on(mouseLeave , () => {
-                                    $subPagesContainer
-                                        .stop()
-                                        .animate({top: subPageContainerInitialPosition}, 200 , ()=> {$subPagesContainer.removeAttr('style')} )
-                                        .off(mouseLeave);
-                                    $(activeSubMenu)
-                                        .stop()
-                                        .animate({
-                                            opacity: 0
-                                        } , 200 , () => {
-                                            $(activeSubMenu).removeAttr('style').removeClass('active');
-                                        });
-                                    activeSubMenu = '';
-                                    subPagesMenuVisible = false;
-                                });
-                            $(activeSubMenu)
-                                .stop()
-                                .addClass('active')
-                                .animate({
-                                    opacity: 1
-                                } , 200);
-
+                                .animate({height: $(activeSubMenu).height() }, 200 , activateSubMenu )
+                                .off(mouseLeave)
+                                .on(mouseLeave , deactivateOnMouseLeave);
                         }
                         else{
+                            $subPagesContainer.stop();
                             $(activeSubMenu)
+                                .stop()
                                 .animate({
                                     opacity: 0
                                 }, 100 , () => {
                                     $(activeSubMenu)
                                         .removeAttr('style')
                                         .removeClass('active');
-                                    $(menuContent)
-                                        .addClass('active')
-                                        .animate({
-                                        opacity: 1
-                                    } , 100);
                                     activeSubMenu = menuContent;
+                                    $subPagesContainer
+                                        .stop()
+                                        .animate({height: $(activeSubMenu).height() }, 200 , activateSubMenu)
+                                        .off(mouseLeave)
+                                        .on(mouseLeave , deactivateOnMouseLeave);
                                 })
                         }
                     }
                 });
             } else {
                 $(menuItem).on(mouseOver , () => {
-                    $subPagesContainer
-                        .stop()
-                        .animate({top: subPageContainerInitialPosition}, 200 , ()=> {$subPagesContainer.removeAttr('style')} );
                     $(activeSubMenu)
                         .animate({
                             opacity: 0
@@ -82,9 +65,12 @@ $(document).ready(() => {
                             $(activeSubMenu)
                                 .removeAttr('style')
                                 .removeClass('active');
+                            activeSubMenu = '';
+                            subPagesMenuVisible = false;
+                            $subPagesContainer
+                                .stop()
+                                .animate({height: 0}, 200 , ()=> {$subPagesContainer.removeAttr('style')} );
                         });
-                    activeSubMenu = '';
-                    subPagesMenuVisible = false;
                 });
             }
         });
@@ -108,4 +94,29 @@ $(document).ready(() => {
     }
 });
 
-
+function activateSubMenu(){
+    $(activeSubMenu)
+        .stop()
+        .addClass('active')
+        .animate({
+            opacity: 1
+        } , 100);
+}
+function deactivateSubMenu(){
+    $(activeSubMenu)
+        .stop()
+        .animate({
+            opacity: 0
+        } , 100 , () => {
+            $(activeSubMenu).removeAttr('style').removeClass('active');
+            activeSubMenu = '';
+            subPagesMenuVisible = false;
+        });
+}
+function deactivateOnMouseLeave(){
+    $subPagesContainer
+        .stop()
+        .animate({height: 0}, 200 , ()=> {$subPagesContainer.removeAttr('style')} )
+        .off(mouseLeave);
+    deactivateSubMenu();
+}

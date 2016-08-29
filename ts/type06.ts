@@ -10,7 +10,6 @@ $(document).ready(() => {
         $tabs.each( (index:number,el:HTMLObjectElement) => {
            if(el.innerText.toLowerCase() == title.toLowerCase()){
                initialActive = index;
-               console.log(initialActive);
            }
         });
         $($maps[initialActive])
@@ -21,8 +20,16 @@ $(document).ready(() => {
             .css({
                 visibility: 'visible'
             });
-        $($tabs[initialActive])
-            .addClass('active');
+        $tabs
+            .each( (i:number, el:HTMLObjectElement) =>{
+                if( i < initialActive ){
+                    $(el).addClass('left')
+                } else if ( i == initialActive ){
+                    $(el).addClass('active')
+                } else{
+                    $(el).addClass('right')
+                }
+            });
         $tabs.each(function(index) {
             $(this).on('click' , ()=>{
                 $($maps)
@@ -32,7 +39,7 @@ $(document).ready(() => {
                 $($tabContent)
                     .removeAttr('style');
                 $($tabs)
-                    .removeClass('active');
+                    .removeClass('active left right');
                 $($maps[index])
                     .stop()
                     .animate({
@@ -42,22 +49,31 @@ $(document).ready(() => {
                     .css({
                         visibility: 'visible'
                     });
-                $($tabs[index])
-                    .addClass('active');
+                $tabs
+                    .each( (i:number, el:HTMLObjectElement) =>{
+                        if( i < index ){
+                            $(el).addClass('left')
+                        } else if ( i == index ){
+                            $(el).addClass('active')
+                        } else{
+                            $(el).addClass('right')
+                        }
+                    })
+
             })
         });
     }
-});
-function getQueryVariable(variable:string)
-{
-    let query = window.location.search.substring(1),
-         vars = query.split("&");
+    function getQueryVariable(variable:string)
+    {
+        let query = window.location.search.substring(1),
+            vars = query.split("&");
 
-    for (let i=0 ; i < vars.length ; i++) {
-        let pair = vars[i].split("=");
-        if( pair[0] == variable ) {
-            return decodeURIComponent(pair[1]);
+        for (let i=0 ; i < vars.length ; i++) {
+            let pair = vars[i].split("=");
+            if( pair[0] == variable ) {
+                return decodeURIComponent(pair[1]);
+            }
         }
+        return('');
     }
-    return('');
-}
+});

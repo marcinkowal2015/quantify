@@ -4,6 +4,10 @@
 
   @include display(flex);
   @include flex-direction(row);
+  @include xs{
+    @include flex-direction(column);
+    text-align: center;
+  }
 
   box-sizing: border-box;
   width: 100%;
@@ -17,6 +21,9 @@
   &__main{
     @include flex(2);
     margin-right: 20px;
+    @include xs{
+      margin-right: 0;
+    }
 
     &__details{
       padding-bottom: 5px;
@@ -81,6 +88,7 @@
         li{
           &:before{
             content: '►';
+            color: #8a6bff;
             padding-right: 10px;
           }
         }
@@ -99,7 +107,7 @@
         box-sizing: border-box;
         text-transform: uppercase;
         @extend .font-size-18;
-        background-color: #97e3fa;
+        background-color: #8A6BFF;
         color: white;
       }
 
@@ -115,6 +123,7 @@
           &:hover{
             color: #8A6BFF;
           }
+          @include underline-animation(#8A6BFF);
         }
         span:hover{
           cursor: pointer;

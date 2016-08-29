@@ -21,6 +21,7 @@ $type2_page_children = array_reverse(get_page_children( $post->ID, $type2_childr
                     <div class="image-container__page-title"><?php echo get_the_title($type2_page); ?></div>
 
                 </div>
+                <a href="<?php echo $type2_page->guid ?>" class="covering-link"></a>
             </div>
         <?php } ?>
     </div>

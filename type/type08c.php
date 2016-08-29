@@ -37,16 +37,35 @@
             <?php
             $args = array(
                 'post_type' => 'haslo_slownika',
-                'post_status' => 'publish'
+                'post_status' => 'publish',
+                'orderby' => 'title',
+                'order'   => 'ASC',
             );
             $media_query = null;
             $media_query = new WP_Query($args); ?>
             <?php if( $media_query->have_posts()){
                 while($media_query->have_posts()): $media_query->the_post(); ?>
-                    <?php $record_association = get_field('usluga') ?>
-                    <div class="filter__item post-parent-<?php echo $record_association->ID ?>"">
+                    <?php
+                    $record_associations = '';
+                    if( have_rows('powiazane_uslugi') ):
+
+                        while ( have_rows('powiazane_uslugi') ) : the_row();
+
+                            $record_associations .= ' post-parent-' . get_sub_field('usluga')->ID;
+
+                        endwhile;
+
+                    else:
+
+                        $record_associations .= 'no-association';
+
+                    endif;
+                    ?>
+
+                    <div class="filter__item <?php echo $record_associations ?>">
                         <span class="dynamic-content" id="post-id-<?php echo $post->ID ?>"><?php the_title()?></span>
                     </div>
+
                 <?php endwhile;
             }
             wp_reset_query();?>

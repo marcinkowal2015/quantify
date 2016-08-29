@@ -7,11 +7,16 @@
     $media_query = null;
     $media_query = new WP_Query($args); ?>
     <div class="geographical-coverage__map">
-        <?php if( $media_query->have_posts()){
-            while($media_query->have_posts()): $media_query->the_post(); ?>
-                <?php the_post_thumbnail() ?>
-            <?php endwhile;
-        } ?>
+        <div class="geographical-coverage__map__wrapper">
+            <?php if( $media_query->have_posts()){
+
+                while($media_query->have_posts()): $media_query->the_post(); ?>
+
+                    <?php the_post_thumbnail() ?>
+
+                <?php endwhile;
+            } ?>
+        </div>
     </div>
     <?php $media_query = new WP_Query($args);  ?>
     <div class="geographical-coverage__tabs">
@@ -28,11 +33,13 @@
     </div>
     <?php $media_query = new WP_Query($args);  ?>
     <div class="geographical-coverage__tab-content">
-        <?php if( $media_query->have_posts()){
-            while($media_query->have_posts()): $media_query->the_post(); ?>
-                <div class="geographical-coverage__tab-content__item"><?php echo get_the_content() ?></div>
-            <?php endwhile;
-        } ?>
+        <div class="geographical-coverage__tab-content__wrapper">
+            <?php if( $media_query->have_posts()){
+                while($media_query->have_posts()): $media_query->the_post(); ?>
+                    <div class="geographical-coverage__tab-content__item"><?php echo get_the_content() ?></div>
+                <?php endwhile;
+            } ?>
+        </div>
     </div>
 </div>
 <?php wp_reset_query();?>

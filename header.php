@@ -8,6 +8,16 @@
 </head>
 <body <?php body_class(); ?>>
 
+<?php if(is_home()) { ?>
+
+    <section class="pre-loader">
+        <div class="circle pulse-animation first-item"></div>
+        <div class="circle pulse-animation second-item"></div>
+        <div class="circle pulse-animation third-item"></div>
+    </section>
+
+<?php } ?>
+
 <header>
     <div class="header">
         <div class="header__container">
@@ -20,16 +30,14 @@
                         'sort_order' => 'asc',
                         'sort_column' => 'menu_order',
                     ));
-                    custom_menu_listing(array(
-                        'menu_items' => $menu_items,
-                        'menu_container' => 'div',
-                        'menu_attr' => 'class="header__main-menu"',
-                        'element_container' => 'span',
-                        'element_attr' => 'class="header__main-menu__item"',
-                        'element_id_prefix' => 'main-menu-item',
-                        'add_link' => true,
-                    ));
                     ?>
+                    <div class="header__main-menu">
+                        <?php foreach ($menu_items as $item){ ?>
+                            <span class="header__main-menu__item" id="main-menu-item-<?php echo $item->ID ?>">
+                                <a href="<?php echo $item->guid ?>"><?php echo $item->post_title ?></a>
+                            </span>
+                        <?php } ?>
+                    </div>
                     <div class="header__divider">
                         |
                     </div>
@@ -39,7 +47,7 @@
                     </div>
                 </div>
                 <div class="header__burger-menu">
-                    <!--                        <img src="--><?php //echo get_template_directory_uri()?><!--/img/left-arrow.png">-->
+                    <img src="<?php echo get_template_directory_uri()?>/img/burger-menu.png">
                 </div>
             </div>
         </div>
@@ -89,7 +97,7 @@
                                         <?php if($category_nicename == 'type06') {?>
                                             <li><a href="<?php echo $child_page->guid . '&title=' . $grandchildren->post_title  ?>"><?php echo $grandchildren->post_title ?></a></li>
                                         <?php }  else {?>
-                                        <li><a href="<?php echo $grandchildren_page->guid  ?>"><?php echo $grandchildren->post_title ?></a></li>
+                                            <li><a href="<?php echo $grandchildren_page->guid  ?>"><?php echo $grandchildren->post_title ?></a></li>
                                         <?php }
                                     } ?>
                                 </ul>
