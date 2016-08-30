@@ -9,6 +9,9 @@ $breadcrumb-color : #414042;
 $breadcrumb-hover-color : #8A6BFF;
 
 header {
+
+  font-family: "Open Sans", serif;
+
   .fixed-top{
     position: fixed;
     top: 0;
@@ -25,7 +28,6 @@ header {
     position: relative;
     width: 100%;
     background-color: #fff;
-    font-family: "Open Sans", serif;
 
     &__container{
       position: relative;
@@ -158,69 +160,71 @@ header {
       }
     }
 
-    .mobile-menu{
+  }
 
+  .mobile-menu{
+
+    @include not_xs{
+      display: none;
+    }
+    @include xs{
+      position: relative;
+      @include display(flex);
+      @include flex-direction(column);
+      @include align-items(center);
+      @include justify-content(center);
+      width: 100%;
+      overflow: hidden;
+      &.closed {
+        height: 0;
+        @include transition(all 0.3s linear)
+      }
+      @include transition(all 0.3s linear)
+    }
+
+    margin: 0;
+    list-style-type: none;
+
+    &__item {
+      position: relative;
+      margin-left: 0;
+      margin-right: 0;
+      padding: 5px 0;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      background-color: #E1E8FF;
+      opacity: 0.9;
+
+      a{
+        @extend .font-size-14;
+        &:link, &:active, &:visited{
+          color: $menu-item-color;
+          text-decoration: none;
+        }
+        &:hover{
+          color: $menu-item-hover-color;
+        }
+        &.active{
+          border-bottom: 1px solid $menu-item-hover-color;
+        }
+      }
+
+      &:hover>a{
+        color: $menu-item-hover-color;
+      }
+    }
+
+    img{
       @include not_xs{
         display: none;
       }
       @include xs{
-        position: relative;
-        @include display(flex);
-        @include flex-direction(column);
-        @include align-items(center);
-        @include justify-content(center);
-        width: 100%;
-        overflow: hidden;
-        background-color: #E1E8FF;
-        &.closed {
-          height: 0;
-          @include transition(all 0.3s linear)
-        }
-        @include transition(all 0.3s linear)
-      }
-
-      margin: 0;
-      list-style-type: none;
-
-      &__item {
-        position: relative;
-        margin-left: 0;
-        margin-right: 0;
-        padding: 3px 0;
-        width: 100%;
-        text-align: center;
-        cursor: pointer;
-
-        a{
-          @extend .font-size-14;
-          &:link, &:active, &:visited{
-            color: $menu-item-color;
-            text-decoration: none;
-          }
-          &:hover{
-            color: $menu-item-hover-color;
-          }
-          &.active{
-            border-bottom: 1px solid $menu-item-hover-color;
-          }
-        }
-
-        &:hover>a{
-          color: $menu-item-hover-color;
-        }
-      }
-
-      img{
-        @include not_xs{
-          display: none;
-        }
-        @include xs{
-          display: block;
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          width: 10px;
-        }
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 10px;
       }
     }
   }
@@ -342,6 +346,9 @@ header {
 
         &__list {
           width: 25%;
+          @include xs{
+            width: 100%;
+          }
 
           &__title {
             padding-bottom: 10px;

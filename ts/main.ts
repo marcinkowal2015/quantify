@@ -83,6 +83,9 @@ $(document).ready(() => {
                 } else {
                     $mobileMenu.addClass('closed');
                     $subPagesContainer.removeAttr('style');
+                    changeMenuItemOpacity();
+                    $(activeSubMenu).removeClass('active').removeAttr('style');
+                    activeSubMenu = '';
                 }
             });
 
@@ -92,6 +95,7 @@ $(document).ready(() => {
                 let menuContent:string = "#" + menuItem.id + "_content";
                 if ($(menuContent)[0]) {
                     $(menuItem).on('click', () => {
+                        changeMenuItemOpacity($(menuItem));
                         if (activeSubMenu != menuContent) {
                             if (!subPagesMenuVisible) {
                                 subPagesMenuVisible = true;
@@ -120,6 +124,7 @@ $(document).ready(() => {
                 }
                 else {
                     $(menuItem).on('click', () => {
+                        changeMenuItemOpacity();
                         $(activeSubMenu)
                             .css({
                                 opacity: 0
@@ -163,5 +168,16 @@ function deactivateOnMouseLeave(){
         .animate({height: 0}, 200 , ()=> {$subPagesContainer.removeAttr('style')} )
         .off(mouseLeave);
     deactivateSubMenu();
+}
+function changeMenuItemOpacity(anchor:JQuery = undefined ){
+
+    $mobileMenuItems.removeAttr('style');
+
+    if(anchor){
+        anchor.css({
+            opacity:1
+        })
+    }
+
 }
 

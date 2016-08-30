@@ -53,16 +53,16 @@
                     </div>
                 </div>
             </div>
-            <div class="mobile-menu closed">
-                <?php foreach ($menu_items as $item){ ?>
-                    <span class="mobile-menu__item" id="main-menu-item-<?php echo $item->ID ?>">
-                <a href="<?php echo $item->guid ?>"><?php echo $item->post_title ?></a>
-                        <?php if ( get_pages(array( 'child_of' => $item->ID )) && $item->ID != 195) { ?>
-                            <img src="<?php echo get_template_directory_uri()?>/img/arrow-down.png">
-                        <?php } ?>
-            </span>
-                <?php } ?>
-            </div>
+        </div>
+        <div class="mobile-menu closed">
+            <?php foreach ($menu_items as $item){ ?>
+                <span class="mobile-menu__item" id="main-menu-item-<?php echo $item->ID ?>">
+                        <a href="<?php echo $item->guid ?>"><?php echo $item->post_title ?></a>
+                    <?php if ( get_pages(array( 'child_of' => $item->ID )) && $item->ID != 195) { ?>
+                        <img src="<?php echo get_template_directory_uri()?>/img/arrow-down.png">
+                    <?php } ?>
+                    </span>
+            <?php } ?>
         </div>
 
         <div class="subpages_container" >
