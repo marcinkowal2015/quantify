@@ -41,6 +41,14 @@
     </footer>
 <?php } ?>
 
+<script>
+    $(window).on('load' , function(){
+        $('.pre-loader').css({
+            display: 'none'
+        })
+    });
+</script>
+
 <?php wp_footer(); ?>
 
 </body>
