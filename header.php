@@ -44,8 +44,11 @@
                             |
                         </div>
                         <div class="header__language">
-                            <span class="header__language__item"><a href="<?php bloginfo('url') ?>">pl</a></span>
-                            <span class="header__language__item">en</span>
+
+                            <?php qtranxf_generateLanguageSelectCode(array(
+                                'type' => 'custom',
+                                'format' => '%c'
+                            )) ?>
                         </div>
                     </div>
                     <div class="header__burger-menu">
@@ -131,7 +134,7 @@
     if( !is_home() ) { ?>
         <div class="breadcrumb">
             <div class="breadcrumb__bar">
-                <a href="<?php echo get_home_url() ?>"><span>Strona Główna</span></a>
+                <a href="<?php echo get_home_url() ?>"><span><?php _e('Strona Główna' , 'quantify') ?></span></a>
                 <?php $current_page = get_post();
                 $page_path = array( $current_page );
                 $tmp = $current_page;

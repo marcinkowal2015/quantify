@@ -7,7 +7,9 @@
             $wp_query = new WP_Query();
             $direct_page_children = $wp_query->query(array(
                 'post_type' => 'page',
-                'post_parent' => $top_ancestor_id
+                'post_parent' => $top_ancestor_id,
+                'order' => 'desc',
+                'orderby' => 'menu_order',
             ));
             $top_ancestor_children = array_reverse(get_page_children( $top_ancestor_id, $direct_page_children ));
             for ($i = 0 ; $i < 3; $i++ ){?>

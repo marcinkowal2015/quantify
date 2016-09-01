@@ -13,9 +13,11 @@
     <div class="contact__side">
         <div class="contact-form">
             <div class="contact-form__title">
-                Szybki kontakt
+                <?php _e('Szybki kontakt' , 'quantify') ?>
             </div>
-            <?php echo do_shortcode('[sform id=\'423\']') ?>
+            <?php if ( is_active_sidebar( 'side_bar' ) ) : ?>
+                <?php dynamic_sidebar( 'side_bar' ); ?>
+            <?php endif; ?>
         </div>
     </div>
 </div>

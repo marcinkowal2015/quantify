@@ -1,0 +1,80 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: quantify\n"
+"POT-Creation-Date: 2016-08-31 09:35+0200\n"
+"PO-Revision-Date: 2016-08-31 09:36+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"Last-Translator: \n"
+"Language: en_GB\n"
+"X-Poedit-SearchPath-0: footer.php\n"
+"X-Poedit-SearchPath-1: header.php\n"
+"X-Poedit-SearchPath-2: home.php\n"
+"X-Poedit-SearchPath-3: type\n"
+
+#: header.php:137
+msgid "Strona Główna"
+msgstr ""
+
+#: home.php:54 type/type07a.php:14 type/type07b.php:25
+msgid "Dowiedz się więcej"
+msgstr "Learn more"
+
+#: type/type07a.php:18 type/type07b.php:29
+msgid "Słownik badawczy"
+msgstr ""
+
+#: type/type07a.php:22 type/type07b.php:33
+msgid "Artykuły"
+msgstr ""
+
+#: type/type07a.php:27 type/type07b.php:38 type/type10.php:16
+msgid "Szybki kontakt"
+msgstr ""
+
+#: type/type07b.php:9
+msgid "B2B"
+msgstr ""
+
+#: type/type07b.php:13
+msgid "B2C"
+msgstr ""
+
+#: type/type08a.php:13
+msgid "Filtruj artykuły"
+msgstr ""
+
+#: type/type08a.php:30
+msgid "Wszystkie artykuły"
+msgstr ""
+
+#: type/type08c.php:13
+msgid "Filtruj hasła"
+msgstr ""
+
+#: type/type08c.php:30
+msgid "Wszystkie hasła"
+msgstr ""
+
+#: type/type09.php:5
+msgid "Opublikowano"
+msgstr ""
+
+#: type/type09.php:31
+msgid "MENU"
+msgstr ""
+
+#: type/type09.php:46
+msgid "Powrót do listy artykułów"
+msgstr ""
+
+#: type/type09.php:53
+msgid "Oferta"
+msgstr ""

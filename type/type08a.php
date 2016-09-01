@@ -10,7 +10,7 @@
     <div class="type08__side">
         <div class="filter">
             <div class="filter__title">
-                Filtruj artykuły
+                <?php _e('Filtruj artykuły' , 'quantify') ?>
             </div>
             <?php
             $offer = get_post(188); // offer page ID
@@ -27,7 +27,7 @@
             <div class="filter__input">
                 <form id="filter-form">
                     <select id="dictionary" title="" >
-                        <option value="0">Wszystkie artykuły</option>
+                        <option value="0"><?php _e('Wszystkie artykuły' , 'quantify') ?></option>
                         <?php foreach ($grandchildren as $item){ ?>
                             <option value="<?php echo $item->ID ?>"><?php echo $item->post_title ?></option>
                         <?php } ?>

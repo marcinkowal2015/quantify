@@ -138,6 +138,21 @@ header {
       text-transform: uppercase;
       @extend .font-size-14;
 
+      ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        @include display(inline-flex);
+
+        li{
+          padding-right: 8px;
+
+          &:last-of-type{
+            padding-right: 0;
+          }
+        }
+      }
+
       &__item{
         color: $menu-item-color;
 

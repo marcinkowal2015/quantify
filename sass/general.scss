@@ -1,9 +1,3 @@
-/*
-Theme Name: Quantify
-Author: LonelyLama
-Author URI: http://lonelylama.co/
-Version: 1.0
-*/
 @import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "mediaquery";
 @import "responsive-fonts";
@@ -57,4 +51,9 @@ body, html{
     width: 100%;
     @include transition(all 0.3 linear);
   }
+}
+
+//WP widget fix
+li.widget {
+  list-style: none;
 }

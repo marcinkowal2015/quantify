@@ -51,7 +51,7 @@
             <?php endwhile;
             }
             wp_reset_query();?>
-            <a id="read-more">Dowiedz się więcej</a>
+            <a id="read-more"><?php _e('Dowiedz się więcej' , 'quantify') ?></a>
         </div>
     </div>
 </div>

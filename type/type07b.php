@@ -6,11 +6,11 @@
         <div class="type07__main__business-type">
             <div class="type07__main__business-type__title active">
                 <div class="underline-animation"></div>
-                    B2B
+                    <?php _e('B2B' , 'quantify') ?>
                 </div>
             <div class="type07__main__business-type__title">
                 <div class="underline-animation"></div>
-                B2C
+                <?php _e('B2C' , 'quantify') ?>
             </div>
         </div>
         <div class="type07__main__content">
@@ -22,22 +22,24 @@
         <?php get_template_part('siblings-menu') ?>
         <div class="learn-more">
             <div class="learn-more__title">
-                Dowiedz się więcej
+                <?php _e('Dowiedz się więcej' , 'quantify') ?>
             </div>
             <div class="learn-more__link">
                 <?php $dictionary = get_post(343);?>
-                <a href="<?php echo get_permalink($dictionary->ID)?>">Słownik badawczy</a> » <a href="<?php echo get_permalink($dictionary->ID) . '?title=' . $post->post_title ?>"><?php the_title()?></a>
+                <a href="<?php echo get_permalink($dictionary->ID)?>"><?php _e('Słownik badawczy' , 'quantify') ?></a> » <a href="<?php echo get_permalink($dictionary->ID) . '?title=' . $post->post_title ?>"><?php the_title()?></a>
             </div>
             <div class="learn-more__link">
                 <?php $article = get_post(346);  ?>
-                <a href="<?php echo get_permalink($article->ID)?>">Artykuły</a> » <a href="<?php echo get_permalink($article->ID) . '?title=' . $post->post_title ?>"><?php the_title()?></a>
+                <a href="<?php echo get_permalink($article->ID)?>"><?php _e('Artykuły' , 'quantify') ?></a> » <a href="<?php echo get_permalink($article->ID) . '?title=' . $post->post_title ?>"><?php the_title()?></a>
             </div>
         </div>
         <div class="contact-form">
             <div class="contact-form__title">
-                Szybki kontakt
+                <?php _e('Szybki kontakt' , 'quantify') ?>
             </div>
-            <?php echo do_shortcode('[sform id=\'423\']') ?>
+            <?php if ( is_active_sidebar( 'side_bar' ) ) : ?>
+                <?php dynamic_sidebar( 'side_bar' ); ?>
+            <?php endif; ?>
         </div>
     </div>
 </div>

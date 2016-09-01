@@ -10,7 +10,7 @@
     <div class="type08__side">
         <div class="filter">
             <div class="filter__title">
-                Filtruj hasła
+                <?php _e('Filtruj hasła' , 'quantify') ?>
             </div>
             <?php
             $oferta = get_post(188);
@@ -27,7 +27,7 @@
             <div class="filter__input">
                 <form id="filter-form">
                     <select id="dictionary" title="" >
-                        <option value="0">Wszystkie hasła</option>
+                        <option value="0"><?php _e('Wszystkie hasła' , 'quantify') ?></option>
                         <?php foreach ($grandchildren as $item){ ?>
                             <option value="<?php echo $item->ID ?>"><?php echo $item->post_title ?></option>
                         <?php } ?>

@@ -2,7 +2,7 @@
     <div class="article__main">
         <div class="article__main__container">
             <div class="article__main__details">
-                <p>Opublikowano <?php the_date('j F Y') ?></p>
+                <p><?php _e('Opublikowano' , 'quantify') ?> <?php the_date('j F Y') ?></p>
             </div>
             <div class="article__main__author">
                 <?php $author_post = get_field('autor') ?>
@@ -28,7 +28,7 @@
     <div class="article__side">
         <div class="article__side__menu">
             <div class="article__side__menu__title">
-                MENU
+                <?php _e('MENU' , 'quantify') ?>
             </div>
 
             <?php
@@ -43,14 +43,14 @@
                 ));
                 $grandchildren = array_merge($grandchildren , $tmp );
             }?><div class="article__side__menu__item">
-                <a href="<?php echo get_post($post->post_parent)->guid ?>">Powrót do listy artykułów</a>
+                <a href="<?php echo get_post($post->post_parent)->guid ?>"><?php _e('Powrót do listy artykułów' , 'quantify') ?></a>
             </div>
             <?php
             if( have_rows('powiazane_uslugi') ):
 
                 while ( have_rows('powiazane_uslugi') ) : the_row(); ?>
                     <div class="article__side__menu__item">
-                        <a href="<?php echo get_sub_field('usluga')->guid ?>">Oferta » <?php echo get_sub_field('usluga')->post_title ?></a>
+                        <a href="<?php echo get_sub_field('usluga')->guid ?>"><?php _e('Oferta' , 'quantify') ?> » <?php echo get_sub_field('usluga')->post_title ?></a>
                     </div>
                 <?php endwhile;
             endif;

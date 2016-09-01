@@ -52,4 +52,5 @@ gulp.task('deploy', ['clean', 'sass', 'bundle-ts'], function () {
   gulp.src('./fonts/*.*').pipe(gulp.dest(deployTarget + '/fonts'));
   gulp.src('./ajax/*.*').pipe(gulp.dest(deployTarget + '/ajax'));
   gulp.src('./type/*.*').pipe(gulp.dest(deployTarget + '/type'));
+  gulp.src('./languages/*.*').pipe(gulp.dest(deployTarget + '/languages'));
 });

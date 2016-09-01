@@ -1,4 +1,8 @@
 <?php
+
+load_theme_textdomain( 'quantify' ,get_template_directory() . '/languages' );
+add_filter('widget_text', 'do_shortcode');
+
 /**
  * Hide admin bar
  */
@@ -10,13 +14,6 @@ function add_supports(){
     //Add thumbnails support
     add_theme_support('post-thumbnails');
 
-    //Add navigation menus
-//    register_nav_menus(array(
-//        'header_nav'    => __('Menu glowne'),
-//        'footer_1'      => __('Footer Menu 1'),
-//        'footer_2'      => __('Footer Menu 2'),
-//        'footer_3'      => __('Footer Menu 3'),
-//    ));
 
 }
 add_action('after_setup_theme' , 'add_supports');
@@ -65,6 +62,10 @@ function arphabet_widgets_init() {
         'after_widget'  => '</div>',
         'before_title'  => '<h2 class="title">',
         'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name'          => 'Pasek boczny',
+        'id'            => 'side_bar',
     ) );
 
 }
