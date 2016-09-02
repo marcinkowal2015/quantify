@@ -63,11 +63,11 @@
           width: 0;
           height: 100%;
           border-bottom: 1px solid #808080;
-          @include transition(all 0.5s linear);
+          @include transition(all 0.3s linear);
         }
         &:hover .underline-animation{
           width: 100%;
-          @include transition(all 0.5 linear);
+          @include transition(all 0.3s linear);
         }
       }
     }

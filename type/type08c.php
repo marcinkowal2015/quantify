@@ -6,34 +6,7 @@
         <div class="type08__main__content">
             <?php the_content() ?>
         </div>
-    </div>
-    <div class="type08__side">
-        <div class="filter">
-            <div class="filter__title">
-                <?php _e('Filtruj hasła' , 'quantify') ?>
-            </div>
-            <?php
-            $oferta = get_post(188);
-            $children = get_pages(array(
-                'parent' => $oferta->ID,
-            ));
-            $grandchildren = [];
-            foreach ($children as $item){
-                $tmp = get_pages(array(
-                    'parent' => $item->ID,
-                ));
-                $grandchildren = array_merge($grandchildren , $tmp );
-            }?>
-            <div class="filter__input">
-                <form id="filter-form">
-                    <select id="dictionary" title="" >
-                        <option value="0"><?php _e('Wszystkie hasła' , 'quantify') ?></option>
-                        <?php foreach ($grandchildren as $item){ ?>
-                            <option value="<?php echo $item->ID ?>"><?php echo $item->post_title ?></option>
-                        <?php } ?>
-                    </select>
-                </form>
-            </div>
+        <div class="type08__main__list" >
             <?php
             $args = array(
                 'post_type' => 'haslo_slownika',
@@ -69,6 +42,35 @@
                 <?php endwhile;
             }
             wp_reset_query();?>
+        </div>
+    </div>
+    <div class="type08__side">
+        <div class="filter">
+            <div class="filter__title">
+                <?php _e('Filtruj hasła' , 'quantify') ?>
+            </div>
+            <?php
+            $oferta = get_post(188);
+            $children = get_pages(array(
+                'parent' => $oferta->ID,
+                'sort_column' => 'menu_order'
+            ));
+            $grandchildren = [];
+            foreach ($children as $item){
+                $tmp = get_pages(array(
+                    'parent' => $item->ID,
+                    'sort_column' => 'menu_order'
+                ));
+                $grandchildren = array_merge($grandchildren , $tmp );
+            }?>
+            <div class="filter__input">
+                <div class="filter__input__item" data-value="0" >
+                    <span><?php _e('Wszystkie hasła' , 'quantify') ?></span>
+                </div>
+                <?php foreach ($grandchildren as $item){ ?>
+                    <div  class="filter__input__item"  data-value="<?php echo $item->ID ?>"><span><?php echo $item->post_title ?></span></div>
+                <?php } ?>
+            </div>
         </div>
     </div>
 </div>

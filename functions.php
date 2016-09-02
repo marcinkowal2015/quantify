@@ -60,8 +60,8 @@ function arphabet_widgets_init() {
         'id'            => 'footer_column_4',
         'before_widget' => '<div class="contact-form">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="title">',
-        'after_title'   => '</h2>',
+        'before_title'  => '<h2 class="title"><a href="' . get_permalink(202) . '">',
+        'after_title'   => '</h2></a>',
     ) );
     register_sidebar( array(
         'name'          => 'Pasek boczny',
@@ -127,6 +127,18 @@ function custom_menu_order($menu_ord) {
 
 add_filter('custom_menu_order', 'custom_menu_order');
 add_filter('menu_order', 'custom_menu_order');
+
+// define the wpcf7_mail_sent callback
+function action_wpcf7_mail_sent( $contact_form ) {
+    add_filter('wpcf7_ajax_loader', 'my_wpcf7_ajax_loader');
+
+};
+function my_wpcf7_ajax_loader () {
+    return  get_bloginfo('stylesheet_directory') . '/img/done.png';
+}
+// add the action
+add_action( 'wpcf7_mail_sent', 'action_wpcf7_mail_sent', 10, 1 );
+
 
 /**********************************************************
  * Custom functions

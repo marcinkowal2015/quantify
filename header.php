@@ -68,12 +68,13 @@
             <?php } ?>
         </div>
 
-        <div class="subpages_container" >
+        <div class="subpages_container">
             <?php foreach ($menu_items as $page) {
                 $wp_query = new WP_Query();
                 $direct_page_children = $wp_query->query(array(
                     'post_type' => 'page' ,
-                    'post_parent' => $page->ID
+                    'post_parent' => $page->ID,
+                    'sort_column' => 'menu_order'
                 ));
                 if( $page->ID == 195 ){
                     $page_children = [];
@@ -88,13 +89,16 @@
                                 $child_page = get_page_by_title($child->post_title);
                                 $direct_child_children = $wp_query->query(array(
                                     'post_type' => 'page' ,
-                                    'post_parent' => $child_page->ID
+                                    'post_parent' => $child_page->ID,
+                                    'sort_column' => 'menu_order'
                                 ));
                                 //Check if is geographical coverage
                                 $category_nicename = get_the_category($child_page->ID)[0]->category_nicename;
                                 if($category_nicename == 'type06'){
                                     $geographical_reach = get_posts(array(
-                                        'category_name' => 'zasieg-geograficzny'
+                                        'category_name' => 'zasieg-geograficzny',
+                                        'orderby' => 'date',
+                                        'order' => 'asc'
                                     ));
                                     $direct_child_children = array_merge($direct_child_children , $geographical_reach);
                                 };

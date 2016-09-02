@@ -26,15 +26,19 @@
 }
 
 .post-background-image{
+  @include display(flex);
+  @include flex-direction(column-reverse);
+
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+
   background-repeat: no-repeat;
   background-size: auto 100%;
   background-position: -50px 0;
-  width: 100%;
-  height: 300px;
-  @include display(flex);
-  @include flex-direction(column-reverse);
+
   @include transition(all 0.3s ease-in-out);
-  overflow: hidden;
+
   @include sm{
     background-position: 0 0;
     @include transition(none);
@@ -61,17 +65,22 @@
   &:hover {
     cursor: pointer;
 
+    .transparent-background{
+      opacity: 0;
+      @include transition(all 0.3s ease-in-out);
+    }
     .post-background-image{
       background-position: 0 0;
       @include transition(all 0.3s ease-in-out);
     }
     .image-container{
       &__excerpt{
-        bottom: 0;
+        bottom: 40px;
+        opacity: 1;
         @include transition(all 0.3s ease-in-out);
       }
       &__page-title{
-        bottom: 0;
+        bottom: 40px;
         @include transition(all 0.3s ease-in-out);
       }
     }
@@ -83,10 +92,21 @@
   //    margin-right: 0;
   //  }
   //}
+  .transparent-background{
+    position: absolute;
+    top:0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: #3085a3 ;
+    opacity: 0.3;
+    @include transition(all 0.3s ease-in-out);
+  }
 
   &__page-title {
     position: relative;
-    bottom: -10px;
+    bottom: 0;
     @include transition(all 0.3s ease-in-out);
     padding: 0 0 10px 20px;
     text-transform: uppercase;
@@ -97,18 +117,20 @@
   }
   &__excerpt {
     position: relative;
-    bottom: -10px;
+    bottom: 0;
+    min-height: 30px;
+    opacity: 0;
     @include transition(all 0.3s ease-in-out);
     @include display(flex);
     &__content {
-      color: #414042;
+
+      text-shadow: 2px 2px rgba(0,0,0,.1);
+      color: #FFFFFF;
       @extend .font-size-13;
-      background: #FFFFFF;
-      width: 60%
     }
 
     &__text {
-      padding: 30px 20px 10px;
+      padding: 0 20px 10px;
       text-transform: uppercase;
     }
 

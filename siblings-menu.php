@@ -6,7 +6,8 @@
     wp_reset_query();
     $siblings = get_pages(array(
         'post_type' => 'page' ,
-        'child_of' => $post->post_parent
+        'child_of' => $post->post_parent,
+        'sort_column' => 'menu_order'
     ));
     if($siblings){
         foreach ($siblings as $item){?>

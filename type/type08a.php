@@ -6,37 +6,10 @@
         <div class="type08__main__content">
             <?php the_content() ?>
         </div>
-    </div>
-    <div class="type08__side">
-        <div class="filter">
-            <div class="filter__title">
-                <?php _e('Filtruj artykuły' , 'quantify') ?>
-            </div>
-            <?php
-            $offer = get_post(188); // offer page ID
-            $children = get_pages(array(
-                'parent' => $offer->ID,
-            ));
-            $grandchildren = [];
-            foreach ($children as $item){
-                $tmp = get_pages(array(
-                    'parent' => $item->ID,
-                ));
-                $grandchildren = array_merge($grandchildren , $tmp );
-            }?>
-            <div class="filter__input">
-                <form id="filter-form">
-                    <select id="dictionary" title="" >
-                        <option value="0"><?php _e('Wszystkie artykuły' , 'quantify') ?></option>
-                        <?php foreach ($grandchildren as $item){ ?>
-                            <option value="<?php echo $item->ID ?>"><?php echo $item->post_title ?></option>
-                        <?php } ?>
-                    </select>
-                </form>
-            </div>
+        <div class="type08__main__list" >
             <?php $args = array(
                 'category_name' => 'type09',
-                'post_status' => 'publish'
+                'post_status' => 'publish',
             );
             $media_query = null;
             $media_query = new WP_Query($args);
@@ -73,6 +46,54 @@
             }
             wp_reset_query();
             wp_reset_postdata();?>
+        </div>
+    </div>
+    <div class="type08__side">
+        <div class="filter">
+            <div class="filter__title">
+                <?php _e('Filtruj artykuły' , 'quantify') ?>
+            </div>
+            <?php
+            $offer = get_post(188); // offer page ID
+            $children = get_pages(array(
+                'parent' => $offer->ID,
+                'sort_column' => 'menu_order'
+            ));
+            $grandchildren = [];
+            foreach ($children as $item){
+                $tmp = get_pages(array(
+                    'parent' => $item->ID,
+                    'sort_column' => 'menu_order'
+                ));
+                $grandchildren = array_merge($grandchildren , $tmp );
+            }?>
+            <div class="filter__input">
+
+                <!--Dropdown select filter -->
+
+<!--                <form id="filter-form">-->
+<!--                    <select id="dictionary" title="" >-->
+<!--                        <option value="0">--><?php //_e('Wszystkie artykuły' , 'quantify') ?><!--</option>-->
+<!--                        --><?php //foreach ($grandchildren as $item){ ?>
+<!--                            <option value="--><?php //echo $item->ID ?><!--">--><?php //echo $item->post_title ?><!--</option>-->
+<!--                        --><?php //} ?>
+<!--                    </select>-->
+<!--                </form>-->
+
+                <!--/Dropdown select filter-->
+                <!--Div select filter-->
+
+                <div class="filter__input__item" data-value="0" >
+                    <span><?php _e('Wszystkie artykuły' , 'quantify') ?></span>
+                </div>
+                <?php foreach ($grandchildren as $item){ ?>
+                    <div  class="filter__input__item"  data-value="<?php echo $item->ID ?>"><span><?php echo $item->post_title ?></span></div>
+                <?php } ?>
+
+                <!--/Div select filter-->
+
+            </div>
+
         </div>
     </div>
 </div>

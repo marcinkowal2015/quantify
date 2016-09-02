@@ -28,36 +28,63 @@ $(document).ready(()=> {
     //        });
     // }
 
-    let $select:any = $('#dictionary'),
-        $items = $('.filter__item'),
-        $options:any = $select.find('option'),
-        $visible = $items,
+    let
+        // $select:any = $('#dictionary'),
+        $itemsToFilter = $('.filter__item'),
+        $selectableFilters = $('.filter__input__item'),
+        // $options:any = $select.find('option'),
+        $visible = $itemsToFilter,
         $dynamicContent = $('.dynamic-content'),
         initialValueString = getQueryVariable('title');
 
-    if($select[0]){
-        $select
-            .selectize({
-                create: false,
-                sortField: 'text'
-            })
-            .change(()=>{
-                if ($select.val() == 0){
-                    $visible = $items;
-                    $visible
-                        .removeAttr('style');
-                } else {
-                    $items
-                        .css({
-                            display : 'none'
-                        });
-                    $visible = $('.post-parent-'+ $select.val() );
+    if($selectableFilters[0]){
+
+        // Hide elements on init
+        $itemsToFilter
+            .css({
+                display : 'none'
+            });
+
+        $selectableFilters
+            .each((index, elem)=>{
+                let $elem:JQuery = $(elem);
+                $elem.click( () => {
+                    if ($elem.data('value') == 0){
+
+                        $selectableFilters.removeClass('active');
+                        $elem.addClass('active');
+
+                        $visible = $itemsToFilter;
+                        $visible
+                            .removeAttr('style');
+                    } else {
+
+                        $selectableFilters.removeClass('active');
+                        $elem.addClass('active');
+
+                        $itemsToFilter
+                            .css({
+                                display : 'none'
+                            });
+
+                        $visible = $('.post-parent-'+ $elem.data('value') );
+                        $visible
+                            .removeAttr('style');
+                    }
+                });
+                if ($elem.text() == initialValueString ){
+
+                    $selectableFilters.removeClass('active');
+                    $elem.addClass('active');
+
+                    $visible = $('.post-parent-'+ $elem.data('value') );
                     $visible
                         .removeAttr('style');
                 }
             });
-        let selectize = $select[0].selectize;
-        selectize.setValue(selectize.search(initialValueString).items[0].id);
+
+        // let selectize = $select[0].selectize;
+        // selectize.setValue(selectize.search(initialValueString).items[0].id);
 
 
         $dynamicContent.on('click',function () {

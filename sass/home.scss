@@ -145,11 +145,17 @@ $content-carousel-height : 180px;
         @extend .font-size-30;
         margin: 0;
         padding-bottom: 20px;
+        @include xs{
+          padding-bottom: 0;
+        }
       }
 
       p{
         @extend .font-size-18;
         margin: 0;
+        @include xs{
+          display: none;
+        }
       }
 
     }

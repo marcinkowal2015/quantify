@@ -67,6 +67,16 @@ footer {
             @extend .font-size-12;
             padding-bottom: 15px;
           }
+
+          a {
+            color: $font-color;
+            &:link, &:active, &:visited {
+              text-decoration: none;
+            }
+            &:hover {
+              color: $font-hover-color;
+            }
+          }
           p {
             padding: 0;
             margin: 0;
