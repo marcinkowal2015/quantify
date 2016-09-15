@@ -39,7 +39,12 @@
 
                     ?>
                     <div class="filter__item <?php echo $record_associations ?>">
-                        <a href="<?php echo $post->guid ?>"><?php echo get_the_title($post->ID)?></a>
+                        <h3>
+                            <a href="<?php echo get_permalink($post->ID) ?>"><?php echo get_the_title($post->ID)?></a>
+                        </h3>
+                        <span>
+                            <?php echo get_the_excerpt($post->ID) ?>
+                        </span>
                     </div>
                     <?php
                 endwhile;

@@ -3,6 +3,8 @@
 $args = array(
     'post_type' => 'employee',
     'post_status' => 'publish',
+    'orderby' => 'menu_order',
+    'order' => 'ASC'
 );
 wp_reset_query();
 $media_query = null;

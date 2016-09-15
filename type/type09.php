@@ -43,14 +43,14 @@
                 ));
                 $grandchildren = array_merge($grandchildren , $tmp );
             }?><div class="article__side__menu__item">
-                <a href="<?php echo get_post($post->post_parent)->guid ?>"><?php _e('Powrót do listy artykułów' , 'quantify') ?></a>
+                <a href="<?php echo get_permalink($post->post_parent)?>"><?php _e('Powrót do listy artykułów' , 'quantify') ?></a>
             </div>
             <?php
             if( have_rows('powiazane_uslugi') ):
 
                 while ( have_rows('powiazane_uslugi') ) : the_row(); ?>
                     <div class="article__side__menu__item">
-                        <a href="<?php echo get_sub_field('usluga')->guid ?>"><?php _e('Oferta' , 'quantify') ?> » <?php echo get_sub_field('usluga')->post_title ?></a>
+                        <a href="<?php echo get_permalink(get_sub_field('usluga')->ID) ?>"><?php _e('Oferta' , 'quantify') ?> » <?php echo get_sub_field('usluga')->post_title ?></a>
                     </div>
                 <?php endwhile;
             endif;

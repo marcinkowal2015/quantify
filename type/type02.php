@@ -12,15 +12,16 @@ $type2_page_children = array_reverse(get_page_children( $post->ID, $type2_childr
             <div class="image-container">
                 <div style="background-image: url(<?php echo $type2_image_url ?>);" class="post-background-image">
                     <div class="transparent-background"></div>
-                    <div class="image-container__excerpt">
-                        <div class="image-container__excerpt__content">
-                            <div class="image-container__excerpt__text"><?php echo get_the_excerpt($type2_page) ?></div>
-<!--                            <div class="image-container__excerpt__more"><a href="--><?php //the_permalink($type2_page) ?><!--">Dowiedz się więcej >></a></div>-->
+                    <div class="half-height" >
+                        <div class="image-container__page-title"><?php echo get_the_title($type2_page); ?></div>
+                        <div class="image-container__excerpt">
+                            <div class="image-container__excerpt__content">
+                                <div class="image-container__excerpt__text"><?php echo get_the_excerpt($type2_page) ?></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="image-container__page-title"><?php echo get_the_title($type2_page); ?></div>
                 </div>
-                <a href="<?php echo $type2_page->guid ?>" class="covering-link"></a>
+                <a href="<?php echo get_permalink($type2_page->ID) ?>" class="covering-link"></a>
             </div>
         <?php } ?>
     </div>

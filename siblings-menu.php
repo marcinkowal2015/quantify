@@ -12,7 +12,7 @@
     if($siblings){
         foreach ($siblings as $item){?>
             <div class="siblings-menu__siblings <?php echo ($item->ID == $post->ID) ? 'active' : '' ?>">
-                <a href="<?php echo $item->guid ?>"><?php echo get_the_title($item->ID)?></a>
+                <a href="<?php echo get_permalink($item->ID) ?>"><?php echo get_the_title($item->ID)?></a>
             </div>
         <?php }
     }

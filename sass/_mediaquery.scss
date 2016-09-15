@@ -22,13 +22,13 @@
 }
 
 @mixin xs{
-  @media all and (max-width: 480px ){
+  @media screen and (max-width: 480px) and (orientation: portrait) , (max-width: 768px) and (orientation: landscape) {
     @content;
   }
 }
 
 @mixin not_xs{
-  @media all and (min-width: 481px ){
+  @media screen and (min-width: 480px) and (orientation: portrait) ,(min-width: 768px) and (orientation: landscape){
     @content;
   }
 }

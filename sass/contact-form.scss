@@ -27,6 +27,7 @@
       box-sizing: border-box;
       border: solid 1px #d9d9d9;
       border-radius: 0;
+      outline-color: #8a6bff;
     }
     input[type='submit']{
       float: right;
@@ -60,5 +61,17 @@
       content: "";
       color: transparent;
     }
+  }
+  span.wpcf7-not-valid-tip{
+    color: #8a6bff;
+    font-size: 10px;
+  }
+  .wpcf7-response-output{
+    padding: 0;
+    margin-right: 0;
+    border: none !important;
+    font-size: 13px;
+    color: #8a6bff;
+    text-align: right;
   }
 }

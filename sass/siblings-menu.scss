@@ -31,7 +31,6 @@
       &:hover{
         color: #8A6BFF;
       }
-      @include underline-animation(#8A6BFF)
     }
 
     &.active>a{

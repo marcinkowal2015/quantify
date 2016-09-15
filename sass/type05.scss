@@ -57,6 +57,16 @@
         margin: 0;
         padding-bottom: 40px;
       }
+      ul{
+        list-style: none;
+        li{
+          &:before{
+            content: '►';
+            color: #8a6bff;
+            padding-right: 10px;
+          }
+        }
+      }
     }
 
   }

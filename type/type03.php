@@ -6,7 +6,7 @@
                 <img class="type3__featured-image" src="<?php echo $type3_image_url ?>">
             </div>
             <div class="type3__content__text">
-                <?php echo get_post()->post_content; ?>
+                <?php echo apply_filters('the_content' , get_post()->post_content) ?>
             </div>
         </div>
         <div class="type3__navigation">

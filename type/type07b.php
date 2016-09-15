@@ -6,11 +6,19 @@
         <div class="type07__main__business-type">
             <div class="type07__main__business-type__title active">
                 <div class="underline-animation"></div>
-                    <?php _e('B2B' , 'quantify') ?>
+                    <?php if(get_field('b2b_etykieta') ) {
+                        echo get_field('b2b_etykieta');
+                    } else {
+                        _e('B2B' , 'quantify');
+                    }?>
                 </div>
             <div class="type07__main__business-type__title">
                 <div class="underline-animation"></div>
-                <?php _e('B2C' , 'quantify') ?>
+                <?php if(get_field('b2c_etykieta') ) {
+                    echo get_field('b2c_etykieta');
+                } else {
+                    _e('B2C' , 'quantify');
+                }?>
             </div>
         </div>
         <div class="type07__main__content">

@@ -59,11 +59,13 @@
 
   &__featured-image{
     width: 100%;
-    height: 300px;
+    height: auto;
   }
 
   &__image-container {
     padding-right: 20px;
+    max-height: 300px;
+    overflow: hidden;
     @include xs{
       padding-right: 0;
     }

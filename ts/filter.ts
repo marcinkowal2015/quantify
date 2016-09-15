@@ -39,11 +39,9 @@ $(document).ready(()=> {
 
     if($selectableFilters[0]){
 
-        // Hide elements on init
-        $itemsToFilter
-            .css({
-                display : 'none'
-            });
+        $selectableFilters
+            .first()
+            .addClass('active');
 
         $selectableFilters
             .each((index, elem)=>{
@@ -72,6 +70,7 @@ $(document).ready(()=> {
                             .removeAttr('style');
                     }
                 });
+
                 if ($elem.text() == initialValueString ){
 
                     $selectableFilters.removeClass('active');
@@ -86,32 +85,34 @@ $(document).ready(()=> {
         // let selectize = $select[0].selectize;
         // selectize.setValue(selectize.search(initialValueString).items[0].id);
 
-
-        $dynamicContent.on('click',function () {
-            let tmp = {
-                    id: (this.id).match(/\d+/i)[0]
-                },
-                newText:string,
-                request:any,
-                $content = $('.type08__main__content');
-
-            request = $.ajax({
-                url: (window.location.protocol + '//' + window.location.host + '/wp-content/themes/quantify/ajax/loadDictionaryRecord.php'),
-                type: 'post',
-                data: tmp
-            });
-            request
-                .done(function (response:any, textStatus:any, jqXHR:any){
-                    newText = response;
-                    $content.text(newText);
-                })
-                .fail(function (jqXHR:any, textStatus:any, errorThrown:any){
-                    console.error(
-                        "The following error occurred: "+
-                        textStatus, errorThrown
-                    );
-                })
-        })
+        /**
+         * Click on dynamicContent to swap content i certain container whit AJAX loaded content form associated record
+         */
+        // $dynamicContent.on('click',function () {
+        //     let tmp = {
+        //             id: (this.id).match(/\d+/i)[0]
+        //         },
+        //         newText:string,
+        //         request:any,
+        //         $content = $('.type08__main__content');
+        //
+        //     request = $.ajax({
+        //         url: (window.location.protocol + '//' + window.location.host + '/wp-content/themes/quantify/ajax/loadDictionaryRecord.php'),
+        //         type: 'post',
+        //         data: tmp
+        //     });
+        //     request
+        //         .done(function (response:any, textStatus:any, jqXHR:any){
+        //             newText = response;
+        //             $content.text(newText);
+        //         })
+        //         .fail(function (jqXHR:any, textStatus:any, errorThrown:any){
+        //             console.error(
+        //                 "The following error occurred: "+
+        //                 textStatus, errorThrown
+        //             );
+        //         })
+        // })
     }
     function getQueryVariable(variable:string)
     {

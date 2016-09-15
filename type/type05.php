@@ -2,7 +2,9 @@
     <?php
     $args = array(
         'category_name' => 'zasoby-badawcze',
-        'post_status' => 'publish'
+        'post_status' => 'publish',
+        'orderby' => 'menu_order',
+        'order' => 'ASC'
     );
     wp_reset_query();
     $media_query = null;

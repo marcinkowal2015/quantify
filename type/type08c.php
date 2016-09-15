@@ -36,7 +36,10 @@
                     ?>
 
                     <div class="filter__item <?php echo $record_associations ?>">
-                        <span class="dynamic-content" id="post-id-<?php echo $post->ID ?>"><?php the_title()?></span>
+                        <h3 class="dynamic-content" id="post-id-<?php echo $post->ID ?>"><?php the_title()?></h3>
+                        <span>
+                            <?php the_content() ?>
+                        </span>
                     </div>
 
                 <?php endwhile;

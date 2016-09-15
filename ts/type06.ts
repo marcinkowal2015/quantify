@@ -18,7 +18,8 @@ $(document).ready(() => {
             }, 300 );
         $($tabContent[initialActive])
             .css({
-                visibility: 'visible'
+                visibility: 'visible',
+                position: 'relative'
             });
         $tabs
             .each( (i:number, el:HTMLObjectElement) =>{
@@ -47,7 +48,8 @@ $(document).ready(() => {
                     }, 300);
                 $($tabContent[index])
                     .css({
-                        visibility: 'visible'
+                        visibility: 'visible',
+                        position: 'relative'
                     });
                 $tabs
                     .each( (i:number, el:HTMLObjectElement) =>{

@@ -68,14 +68,16 @@
         a, span{
           color: #4f555b;
           text-decoration: none;
-          &:hover{
-            color: #8A6BFF;
-          }
-          @include underline-animation(#8A6BFF);
+          //&:hover{
+          //  color: #8A6BFF;
+          //}
         }
-        span:hover{
-          cursor: pointer;
+        a:hover{
+          color: #8A6BFF;
         }
+        //span:hover{
+        //  cursor: pointer;
+        //}
       }
     }
   }
@@ -117,7 +119,6 @@
               color: #8A6BFF;
               cursor: pointer;
             }
-            @include underline-animation(#8A6BFF);
           }
 
           &.active>span{
@@ -132,13 +133,15 @@
         box-sizing: border-box;
         font-size: 15px;
 
-        a, span{
+        h3, a, span{
           color: #4f555b;
           text-decoration: none;
           &:hover{
             color: #8A6BFF;
           }
-          @include underline-animation(#8A6BFF);
+        }
+        h3{
+          font-weight: bold;
         }
         span:hover{
           cursor: pointer;

@@ -172,7 +172,7 @@ function custom_menu_listing($options){
             $active = ( get_top_ancestor_id() == $menu_item->ID ) ? 'style="text-decoration:underline;"' : '';
             $before_element = isset($options['element_container']) ? '<' . $options['element_container'] . ' ' . $element_attr .' ' . $active : '' ;
             $title = $menu_item->post_title;
-            $url = $menu_item->guid;
+            $url = get_permalink($menu_item->ID);
             $id = isset($options['element_id_prefix']) ? 'id="' . $options['element_id_prefix'] . '-' . $menu_item->ID . '""': '';
             $element = ($add_link) ?  '<a href="' . $url . '">' . $title . '</a>': $title;
             $menu_list .= $before_element . $id . $closing . $element . $element_siblings .$after_element;

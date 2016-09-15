@@ -14,7 +14,8 @@ let
     $headerMainMenuItem:JQuery = $('.header__main-menu__item'),
     $subPagesContainer:JQuery = $('.subpages_container'),
     $mobileMenu:JQuery = $('.mobile-menu'),
-    $mobileMenuItems:JQuery = $('.mobile-menu__item');
+    $mobileMenuItems:JQuery = $('.mobile-menu__item'),
+    $fixedTop:JQuery = $('.fixed-top');
 
 $(document).ready(() => {
     $headerMainMenuItem
@@ -32,6 +33,9 @@ $(document).ready(() => {
                                 .animate({height: $(activeSubMenu).height()}, 200, activateSubMenu)
                                 .off(mouseLeave)
                                 .on(mouseLeave, deactivateOnMouseLeave);
+                            $('body')
+                                .off(mouseLeave)
+                                .on(mouseLeave, deactivateOnMouseLeave);
                         }
                         else {
                             $subPagesContainer.stop();
@@ -47,6 +51,9 @@ $(document).ready(() => {
                                     $subPagesContainer
                                         .stop()
                                         .animate({height: $(activeSubMenu).height()}, 200, activateSubMenu)
+                                        .off(mouseLeave)
+                                        .on(mouseLeave, deactivateOnMouseLeave);
+                                    $('body')
                                         .off(mouseLeave)
                                         .on(mouseLeave, deactivateOnMouseLeave);
                                 })
@@ -70,6 +77,7 @@ $(document).ready(() => {
                                     $subPagesContainer.removeAttr('style')
                                 });
                         });
+                    $('body').off(mouseLeave);
                 });
             }
         });
@@ -103,8 +111,8 @@ $(document).ready(() => {
                                 $(activeSubMenu)
                                     .addClass('active')
                                     .css({opacity:1});
-                                $subPagesContainer
-                                    .css({height: $(activeSubMenu).height()})
+                                $fixedTop
+                                    .css({height: '100vh'})
                             }
                             else {
                                 $(activeSubMenu)
@@ -116,8 +124,8 @@ $(document).ready(() => {
                                     .addClass('active')
                                     .css({opacity: 1});
 
-                                $subPagesContainer
-                                    .css({height: $(activeSubMenu).height()});
+                                $fixedTop
+                                    .css({height: '100vh'});
                             }
                         }
                     });
@@ -134,8 +142,7 @@ $(document).ready(() => {
 
                         activeSubMenu = '';
                         subPagesMenuVisible = false;
-                        $subPagesContainer
-                            .css({height: 0})
+                        $fixedTop
                             .removeAttr('style')
                     });
                 }

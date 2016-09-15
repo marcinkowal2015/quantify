@@ -40,13 +40,19 @@ $(document).ready(() => {
                                 .addClass('height-100');
                         }
                     });
+                $('.pre-loader').css({
+                    display: 'none'
+                });
+                $carousel.slick('slickPlay');
+
             })
+            // image carousel init
             .slick({
                 arrow : true,
                 dots: true,
                 asNavFor: $contentCarousel,
-                autoplay: true,
-                autoplaySpeed: 5000,
+                autoplay: false,
+                autoplaySpeed: 6000,
             });
 
         $(window)
@@ -59,14 +65,11 @@ $(document).ready(() => {
                 $carouselImages
                     .each((index:any, el:any) => {
                         let $el = $(el);
-                        console.log( $el.width() + ' ' + $el.height() + ' ' + $carousel.width() + ' ' + containerTargetHeight);
                         if( ( $el.width() / $el.height() ) < ( $carousel.width() / containerTargetHeight ) ) {
-                            console.log('width-100');
                             $el
                                 .removeClass('height-100')
                                 .addClass('width-100')
                         } else {
-                            console.log('height-100');
                             $el
                                 .removeClass('width-100')
                                 .addClass('height-100');

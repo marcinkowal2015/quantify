@@ -4,6 +4,8 @@
     <?php $args=array(
         'post_type' => 'slajd',
         'post_status' => 'publish',
+        'orderby' => 'menu_order',
+        'order'   => 'ASC',
     );
 
     $my_query = null;
@@ -27,9 +29,11 @@
             $my_query = new WP_Query($args);
             if( $my_query->have_posts() ) {
                 while ($my_query->have_posts()) : $my_query->the_post(); ?>
-                    <div class="content__carousel__item">
-                        <h2><?php the_title() ?></h2>
-                        <?php the_content() ?>
+                    <div class="item-wraper">
+                        <div class="content__carousel__item">
+                            <h2><?php the_title() ?></h2>
+                            <?php the_content() ?>
+                        </div>
                     </div>
                     <?php
                 endwhile;

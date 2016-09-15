@@ -36,7 +36,7 @@
                         <div class="header__main-menu">
                             <?php foreach ($menu_items as $item){ ?>
                                 <span class="header__main-menu__item" id="main-menu-item-<?php echo $item->ID ?>">
-                                <a href="<?php echo $item->guid ?>"><?php echo $item->post_title ?></a>
+                                <a href="<?php echo get_permalink($item->ID) ?>"><?php echo $item->post_title ?></a>
                             </span>
                             <?php } ?>
                         </div>
@@ -59,63 +59,69 @@
         </div>
         <div class="mobile-menu closed">
             <?php foreach ($menu_items as $item){ ?>
-                <span class="mobile-menu__item" id="main-menu-item-<?php echo $item->ID ?>">
-                        <a href="<?php echo $item->guid ?>"><?php echo $item->post_title ?></a>
+                <div class="mobile-menu__item" id="main-menu-item-<?php echo $item->ID ?>">
+                        <a href="<?php echo get_permalink($item->ID) ?>"><?php echo $item->post_title ?></a>
                     <?php if ( get_pages(array( 'child_of' => $item->ID )) && $item->ID != 195) { ?>
                         <img src="<?php echo get_template_directory_uri()?>/img/arrow-down.png">
                     <?php } ?>
-                    </span>
+                    </div>
             <?php } ?>
         </div>
 
         <div class="subpages_container">
+            <?php wp_reset_query() ?>
+
             <?php foreach ($menu_items as $page) {
-                $wp_query = new WP_Query();
-                $direct_page_children = $wp_query->query(array(
-                    'post_type' => 'page' ,
-                    'post_parent' => $page->ID,
-                    'sort_column' => 'menu_order'
-                ));
+//                $wp_query = new WP_Query();
+//                $direct_page_children = $wp_query->query(array(
+//                    'post_type' => 'page' ,
+//                    'post_parent' => $page->ID,
+//                    'orderby' => 'menu_order',
+//                    'order' => 'ASC'
+//                ));
                 if( $page->ID == 195 ){
                     $page_children = [];
                 } else {
-                    $page_children = array_reverse(get_page_children( $page->ID, $direct_page_children ));
+                    $args = array(
+                        'sort_column' => 'menu_order',
+                        'sort_order ' => 'ASC',
+                        'post_type' => 'page' ,
+                        'parent' => $page->ID
+                    );
+                    $page_children = get_pages($args);
                 }
+//                console_log($page_children);
                 if ($page_children){
                     ?>
                     <div class="navigation" id="<?php echo "main-menu-item-".$page->ID."_content" ?>">
                         <div class="navigation__bar">
                             <?php foreach ($page_children as $child){
-                                $child_page = get_page_by_title($child->post_title);
-                                $direct_child_children = $wp_query->query(array(
+//                                $child_page = get_page_by_title($child->post_title);
+                                $direct_child_children = get_posts(array(
+                                    'orderby' => 'date',
+                                    'order' => 'ASC',
                                     'post_type' => 'page' ,
-                                    'post_parent' => $child_page->ID,
-                                    'sort_column' => 'menu_order'
+                                    'post_parent' => $child->ID,
                                 ));
                                 //Check if is geographical coverage
-                                $category_nicename = get_the_category($child_page->ID)[0]->category_nicename;
+                                $category_nicename = get_the_category($child->ID)[0]->category_nicename;
                                 if($category_nicename == 'type06'){
                                     $geographical_reach = get_posts(array(
                                         'category_name' => 'zasieg-geograficzny',
-                                        'orderby' => 'date',
-                                        'order' => 'asc'
+                                        'orderby' => 'menu_order',
+                                        'order' => 'ASC'
                                     ));
                                     $direct_child_children = array_merge($direct_child_children , $geographical_reach);
                                 };
-                                //----------
-                                $direct_child_children = array_reverse($direct_child_children);
-                                ?>
-
-
+                                //console_log($direct_child_children)?>
                                 <div class="navigation__bar__list">
-                                    <div class="navigation__bar__list__title"><a href="<?php echo $child_page->guid ?>"><?php echo $child_page->post_title ?></a></div>
+                                    <div class="navigation__bar__list__title"><a href="<?php echo get_permalink($child->ID) ?>"><?php echo get_the_title($child->ID) ?></a></div>
                                     <ul>
-                                        <?php foreach ($direct_child_children as $grandchildren){
-                                            $grandchildren_page = get_page_by_title($grandchildren->post_title);?>
+                                        <?php foreach ($direct_child_children as $grandchildren){ ;?>
                                             <?php if($category_nicename == 'type06') {?>
-                                                <li><a href="<?php echo $child_page->guid . '&title=' . $grandchildren->post_title  ?>"><?php echo $grandchildren->post_title ?></a></li>
+                                                <li><a href="<?php echo get_permalink($child->ID) . '?title=' . $grandchildren->post_title  ?>"><?php echo $grandchildren->post_title ?></a></li>
                                             <?php }  else {?>
-                                                <li><a href="<?php echo $grandchildren_page->guid  ?>"><?php echo $grandchildren->post_title ?></a></li>
+                                                <li><a href="<?php echo get_permalink($grandchildren->ID)  ?>"><?php echo $grandchildren->post_title ?></a></li>
                                             <?php }
                                         } ?>
                                     </ul>
@@ -148,9 +154,9 @@
                 }
                 $page_path = array_reverse($page_path);
                 foreach ($page_path as $item ) {?>
-                    <a <?php if ($item != $current_page){ ?> href="<?php echo $item->guid ;?>" <?php } else {
+                    <a <?php if ($item != $current_page){ ?> href="<?php echo get_permalink($item->ID) ;?>" <?php } else {
                         echo 'class="active"';
-                    } ?>><span class="breadcrumb__bar__item"><?php echo $item->post_title; ?></span></a>
+                    } ?>><span class="breadcrumb__bar__item"><?php echo get_the_title($item->ID); ?></span></a>
                 <?php } ?>
             </div>
         </div>

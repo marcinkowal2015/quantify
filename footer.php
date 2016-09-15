@@ -17,14 +17,14 @@
                     <?php if ( isset( $top_ancestor_children[$i]) ){
                         $direct_page_children = $wp_query->query(array(
                             'post_type' => 'page' ,
-                            'post_parent' => $top_ancestor_children[$i]->ID
+                            'post_parent' => $top_ancestor_children[$i]->ID,
                         ));
                         $grand_children = array_reverse(get_page_children( $top_ancestor_children[$i]->ID, $direct_page_children )); ?>
-                        <a href="<?php echo $top_ancestor_children[$i]->guid ?>"><?php echo $top_ancestor_children[$i]->post_title ?></a>
+                        <a href="<?php echo get_permalink($top_ancestor_children[$i]->ID) ?>"><?php echo $top_ancestor_children[$i]->post_title ?></a>
                         <ul>
                         <?php foreach ( $grand_children as $grand_child) {;?>
                             <li>
-                                <a href="<?php echo $grand_child->guid ?>"><?php echo $grand_child->post_title ?></a>
+                                <a href="<?php echo get_permalink($grand_child->ID) ?>"><?php echo $grand_child->post_title ?></a>
                             </li>
                         <?php } ?>
                         </ul>
@@ -42,14 +42,6 @@
 
     </footer>
 <?php } ?>
-
-<script>
-    $(window).on('load' , function(){
-        $('.pre-loader').css({
-            display: 'none'
-        })
-    });
-</script>
 
 <?php wp_footer(); ?>
 
