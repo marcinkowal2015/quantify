@@ -1,19 +1,19 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: quantify\n"
-"POT-Creation-Date: 2016-08-31 09:23+0200\n"
-"PO-Revision-Date: 2016-08-31 09:26+0200\n"
+"POT-Creation-Date: 2016-09-16 12:23+0200\n"
+"PO-Revision-Date: 2016-09-26 09:09+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "Last-Translator: \n"
-"Language: en\n"
+"Language: en_GB\n"
 "X-Poedit-SearchPath-0: footer.php\n"
 "X-Poedit-SearchPath-1: header.php\n"
 "X-Poedit-SearchPath-2: home.php\n"
@@ -29,7 +29,7 @@ msgstr "Learn more"
 
 #: type/type07a.php:18 type/type07b.php:29
 msgid "Słownik badawczy"
-msgstr "Research dictionary "
+msgstr "Research glossary"
 
 #: type/type07a.php:22 type/type07b.php:33
 msgid "Artykuły"
@@ -49,11 +49,11 @@ msgstr "B2C"
 
 #: type/type08a.php:13
 msgid "Filtruj artykuły"
-msgstr "Filer article "
+msgstr "Filter articles"
 
 #: type/type08a.php:30
 msgid "Wszystkie artykuły"
-msgstr "All articles "
+msgstr "All articles"
 
 #: type/type08c.php:13
 msgid "Filtruj hasła"
@@ -73,8 +73,19 @@ msgstr "MENU"
 
 #: type/type09.php:46
 msgid "Powrót do listy artykułów"
-msgstr "Back to the articles list "
+msgstr "Back to articles list"
 
 #: type/type09.php:53
 msgid "Oferta"
 msgstr "Offer"
+
+#: footer.php:49
+msgid ""
+"Ten serwis wykorzystuje pliki cookies. Korzystanie z witryny oznacza zgodę "
+"na ich zapis lub odczyt wg ustawień przeglądarki."
+msgstr ""
+"This website uses cookies to ensure you get the best experience on our "
+"website."
+
+msgid "Rozumiem i akceptuję"
+msgstr "I understand and agree"

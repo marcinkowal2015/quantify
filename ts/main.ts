@@ -94,6 +94,9 @@ $(document).ready(() => {
                     changeMenuItemOpacity();
                     $(activeSubMenu).removeClass('active').removeAttr('style');
                     activeSubMenu = '';
+                    subPagesMenuVisible = false;
+                    $fixedTop
+                        .removeAttr('style');
                 }
             });
 

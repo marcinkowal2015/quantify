@@ -20,7 +20,7 @@ $(document).ready(() => {
             // image carousel init resize
             .height(containerTargetHeight)
             // image carousel init
-            .on('init' , () =>{
+            .on('init' , function(){
                 $carouselImagesContainer= $('.carousel__image-item');
                 $carouselImages = $('.carousel__container img');
 
@@ -43,7 +43,7 @@ $(document).ready(() => {
                 $('.pre-loader').css({
                     display: 'none'
                 });
-                $carousel.slick('slickPlay');
+                // $carousel.slick('slickPlay');
 
             })
             // image carousel init
@@ -51,7 +51,7 @@ $(document).ready(() => {
                 arrow : true,
                 dots: true,
                 asNavFor: $contentCarousel,
-                autoplay: false,
+                autoplay: true,
                 autoplaySpeed: 6000,
             });
 

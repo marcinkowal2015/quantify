@@ -11,14 +11,18 @@
 .type2-container {
   @include display(flex);
   @include flex-direction(row);
-  @include justify-content(space-between);
+  @include not_xs{
+    @include justify-content(space-between);
+  }
+  @include xs{
+    @include justify-content(center);
+  }
   @include flex-flow(wrap);
   width: 100%;
   max-width: 960px;
   padding: 0 20px 0  20px;
   box-sizing: border-box;
 
-  //
   &:after{
     content: "";
     width: 30%;
@@ -59,6 +63,7 @@
   @include xs{
     min-width: 0;
     width: 100%;
+    max-width: 400px;
     margin-bottom: 20px;
   }
 

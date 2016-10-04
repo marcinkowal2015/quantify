@@ -79,3 +79,11 @@ msgstr ""
 #: type/type09.php:53
 msgid "Oferta"
 msgstr ""
+
+#: footer.php:49
+msgid "Ten serwis wykorzystuje pliki cookies. Korzystanie z witryny oznacza zgodę na ich zapis lub odczyt wg ustawień przeglądarki."
+msgstr ""
+
+#:footer.php:53
+msgid "Rozumiem i akceptuję"
+msgstr ""

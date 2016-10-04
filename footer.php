@@ -43,6 +43,21 @@
     </footer>
 <?php } ?>
 
+<div class="cookies-disclaimer" style="display: none">
+    <div class="cookies-disclaimer__container">
+        <div class="cookies-disclaimer__text__container">
+            <div class="cookies-disclaimer__text">
+                <?php _e('Ten serwis wykorzystuje pliki cookies. Korzystanie z witryny oznacza zgodę na ich zapis lub odczyt wg ustawień przeglądarki.' , 'quantify') ?>
+            </div>
+        </div>
+        <div class="cookies-disclaimer__button">
+            <div class="cookies-disclaimer__button__label">
+                <?php _e('Rozumiem i akceptuję' , 'quantify') ?>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php wp_footer(); ?>
 
 </body>
